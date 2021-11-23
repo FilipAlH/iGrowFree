@@ -11,8 +11,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import SingleThought from './pages/SingleThought';
-import Profile from './pages/Profile';
+import SingleThread from './pages/SingleThread';
+import Profile from './pages/User';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -62,8 +62,8 @@ function App() {
             <Route exact path="/profiles/:username">
               <Profile />
             </Route>
-            <Route exact path="/thoughts/:thoughtId">
-              <SingleThought />
+            <Route exact path="/threads/:threadId">
+              <SingleThread />
             </Route>
           </div>
           <Footer />
