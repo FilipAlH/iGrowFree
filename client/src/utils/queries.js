@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+
 export const QUERY_THREADS = gql`
   query getThreads {
     threads {
@@ -24,6 +25,13 @@ export const QUERY_SINGLE_THREAD = gql`
         commentAuthor
         createdAt
       }
+    `;
+
+export const QUERY_ME = gql`
+  query me{
+    me {
+      username
+
     }
   }
 `;

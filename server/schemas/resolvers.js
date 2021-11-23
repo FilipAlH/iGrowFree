@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Comment, Thread } = require('../models');
+const { Comment, Thread, User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -8,13 +8,42 @@ const resolvers = {
       const params = username ? { username } : {};
       return Thread.find(params).sort({ createdAt: -1 });
     },
+      
     thread: async (parent, { threadId }) => {
       return Thread.findOne({ _id: threadId });
     },
+      
+    me: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('Not logged in');
+      }
+      const userData = await User.findOne({ _id: context.user._id }).populate('savedBooks');
+      return userData;
+    },
   },
-  
   Mutation: {
-    addThread: async (parent, { threadText }, context) => {
+    addUser: async (parent, args) => {
+      const newUser = await User.create(args);
+      const token = signToken(newUser);
+      return { token, user: newUser };
+    },
+
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError('User Not Found');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+      if (!correctPw) {
+        throw new AuthenticationError('Credentials does not match');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
+     addThread: async (parent, { threadText }, context) => {
       if (context.user) {
         const thread = await Thread.create({
           threadText,
@@ -79,6 +108,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-  }
+  },
 }
 module.exports = resolvers;
