@@ -1,10 +1,26 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Habit, LifeStyle } = require('../models');
+const { Comment, Thread, User, Habit, LifeStyle } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    habits: async (parent, { lifeStyle }) => {
+    threads: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Thread.find(params).sort({ createdAt: -1 });
+    },
+      
+    thread: async (parent, { threadId }) => {
+      return Thread.findOne({ _id: threadId });
+    },
+      
+    me: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('Not logged in');
+      }
+      const userData = await User.findOne({ _id: context.user._id }).populate('savedBooks');
+      return userData;
+    },
+     habits: async (parent, { lifeStyle }) => {
       const params = lifeStyle ? { lifeStyle } : {};
       return Habit.find(params).sort({ createdAt: -1 });
     },
@@ -13,7 +29,93 @@ const resolvers = {
     },
   },
   Mutation: {
-    addHabit: async (parent, { habitName }, context) => {
+    addUser: async (parent, args) => {
+      const newUser = await User.create(args);
+      const token = signToken(newUser);
+      return { token, user: newUser };
+    },
+
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError('User Not Found');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+      if (!correctPw) {
+        throw new AuthenticationError('Credentials does not match');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
+     addThread: async (parent, { threadText }, context) => {
+      if (context.user) {
+        const thread = await Thread.create({
+          threadText,
+          threadAuthor: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { threads: thread._id } }
+        );
+
+        return thread;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addComment: async (parent, { threadId, commentText }, context) => {
+      if (context.user) {
+        return Thread.findOneAndUpdate(
+          { _id: threadId },
+          {
+            $addToSet: {
+              comments: { commentText, commentAuthor: context.user.username },
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeThread: async (parent, { threadId }, context) => {
+      if (context.user) {
+        const thread = await Thread.findOneAndDelete({
+          _id: threadId,
+          threadAuthor: context.user.username,
+        });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { threads: thread._id } }
+        );
+
+        return thread;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeComment: async (parent, { threadId, commentId }, context) => {
+      if (context.user) {
+        return Thread.findOneAndUpdate(
+          { _id: threadId },
+          {
+            $pull: {
+              comments: {
+                _id: commentId,
+                commentAuthor: context.user.username,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+   addHabit: async (parent, { habitName }, context) => {
       if (context.user) {
         const habit = await Habit.create({
           habitName,
