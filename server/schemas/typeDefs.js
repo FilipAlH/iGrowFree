@@ -33,7 +33,7 @@ const typeDefs = gql`
         user: User
     }        
     type Query {
-        me: User
+        me: [User]
         threads(username: String): [Thread]
         thread(threadId: ID!): Thread
         habits(lifeStyle: String): [Habit]

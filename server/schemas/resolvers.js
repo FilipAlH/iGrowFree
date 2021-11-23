@@ -8,19 +8,15 @@ const resolvers = {
       const params = username ? { username } : {};
       return Thread.find(params).sort({ createdAt: -1 });
     },
-      
+
     thread: async (parent, { threadId }) => {
       return Thread.findOne({ _id: threadId });
     },
-      
-    me: async (parent, args, context) => {
-      if (!context.user) {
-        throw new AuthenticationError('Not logged in');
-      }
-      const userData = await User.findOne({ _id: context.user._id }).populate('savedBooks');
-      return userData;
+
+    me: async () => {
+      return await User.find({});
     },
-     habits: async (parent, { lifeStyle }) => {
+    habits: async (parent, { lifeStyle }) => {
       const params = lifeStyle ? { lifeStyle } : {};
       return Habit.find(params).sort({ createdAt: -1 });
     },
@@ -50,7 +46,7 @@ const resolvers = {
 
       return { token, user };
     },
-     addThread: async (parent, { threadText }, context) => {
+    addThread: async (parent, { threadText }, context) => {
       if (context.user) {
         const thread = await Thread.create({
           threadText,
@@ -115,7 +111,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-   addHabit: async (parent, { habitName }, context) => {
+    addHabit: async (parent, { habitName }, context) => {
       if (context.user) {
         const habit = await Habit.create({
           habitName,
