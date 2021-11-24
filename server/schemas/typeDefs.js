@@ -1,17 +1,18 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+
     type LifeStyle {
         _id: ID
         LifeStyleType: String!
         LifeStyleHabits: [Habit]
     }
 
-    type habit {
-    habitId: String!
-    habitName: String!
-    timeLine: String!
-    quantity: Int!
+    type Habit {
+        _id: ID!
+        habitName: String!
+        frequency: Int!
+        createdAt: String
     }
     
     type Thread {
@@ -54,7 +55,7 @@ const typeDefs = gql`
         addComment(threadId: ID!, commentText: String!): Thread
         removeThread(threadId: ID!): Thread
         removeComment(threadId: ID!, commentId: ID!): Thread
-        addHabit(input: addHabitInput): lifeStyle
+        addHabit(habitId: ID!, habitName: String!, frequency: Int!): lifeStyle
         removeHabit(habitId: String!): lifeStyle
     }
 `;

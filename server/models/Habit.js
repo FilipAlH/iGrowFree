@@ -1,18 +1,17 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const commentSchema = new Schema({
-    CommentText: {
+const habitSchema = new Schema({
+    habitName: {
         type: String,
-        required: 'You need to leave a Comment!',
+        required: 'Create Habit!',
         minlength: 1,
         maxlength: 280,
         trim: true,
     },
-    CommentAuthor: {
-        type: String,
+    frequency: {
+        type: Number,
         required: true,
-        trim: true,
     },
     createdAt: {
         type: Date,
@@ -21,6 +20,6 @@ const commentSchema = new Schema({
     },
 })
 
-const Comment = model('Comment', commentSchema);
+const Habit = model('Habit', HabitSchema);
 
-module.exports = Comment;
+module.exports = Habit;
