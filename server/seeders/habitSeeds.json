@@ -1,0 +1,50 @@
+[
+    {
+        "habitName": "Tai Chi",
+        "frequency": 3
+    },
+    {
+        "habitName": "Attend Church",
+        "frequency": 1
+    },
+    {
+        "habitName": "Attend Synagogue",
+        "frequency": 1
+    },
+    {
+        "habitName": "Attend Mosque",
+        "frequency": 1
+    },
+    {
+        "habitName": "Attend Temple",
+        "frequency": 1
+    },
+    {
+        "habitName": "Meet with Mentor",
+        "frequency": 1
+    },
+    {
+        "habitName": "Find like-minded Community",
+        "frequency": 1
+    },
+    {
+        "habitName": "Change perspective",
+        "frequency": 7
+    },
+    {
+        "habitName": "Comparison to Self",
+        "frequency": 1
+    },
+    {
+        "habitName": "Attitude of Gratitude",
+        "frequency": 7
+    },
+    {
+        "habitName": "Acts of random kindness",
+        "frequency": 7
+    },
+    {
+        "habitName": "Spin Class",
+        "frequency": 3
+    }    
+]
