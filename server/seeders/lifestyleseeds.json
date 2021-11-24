@@ -4,25 +4,25 @@
         "LifeStyleHabits": [
             {
                 "Habit": {
-                    "name": "Weight lifting",
+                    "habitName": "Weight lifting",
                     "frequency": 3
                 }
             },
             {
                 "Habit": {
-                    "name": "Counted calories",
+                    "habitName": "Counted calories",
                     "frequency": 7
                 }
             },
             {
                 "Habit": {
-                    "name": "Protein intake",
+                    "habitName": "Protein intake",
                     "frequency": 5
                 }
             },
             {
                 "Habit": {
-                    "name": "Cardio",
+                    "habitName": "Cardio",
                     "frequency": 3
                 }
             }
@@ -33,25 +33,25 @@
         "LifeStyleHabits": [
             {
                 "Habit": {
-                    "name": "Meditation",
+                    "habitName": "Meditation",
                     "frequency": 5
                 }
             },
             {
                 "Habit": {
-                    "name": "Journaling",
+                    "habitName": "Journaling",
                     "frequency": 5
                 }
             },
             {
                 "Habit": {
-                    "name": "Yoga",
+                    "habitName": "Yoga",
                     "frequency": 4
                 }
             },
             {
                 "Habit": {
-                    "name": "Nature break",
+                    "habitName": "Nature break",
                     "frequency": 4
                 }
             }
@@ -62,25 +62,25 @@
         "LifeStyleHabits": [
             {
                 "Habit": {
-                    "name": "Read chapter",
+                    "habitName": "Read chapter",
                     "frequency": 7
                 }
             },
             {
                 "Habit": {
-                    "name": "Learn something new",
+                    "habitName": "Learn something new",
                     "frequency": 7
                 }
             },
             {
                 "Habit": {
-                    "name": "Attend seminar",
+                    "habitName": "Attend seminar",
                     "frequency": 1
                 }
             },
             {
                 "Habit": {
-                    "name": "Intellectual conversation",
+                    "habitName": "Intellectual conversation",
                     "frequency": 3
                 }
             }
@@ -91,25 +91,25 @@
         "LifeStyleHabits": [
             {
                 "Habit": {
-                    "name": "Talk to a stranger",
+                    "habitName": "Talk to a stranger",
                     "frequency": 7
                 }
             },
             {
                 "Habit": {
-                    "name": "Hang out with friends",
+                    "habitName": "Hang out with friends",
                     "frequency": 3
                 }
             },
             {
                 "Habit": {
-                    "name": "Help a stranger",
+                    "habitName": "Help a stranger",
                     "frequency": 1
                 }
             },
             {
                 "Habit": {
-                    "name": "Message a friend",
+                    "habitName": "Message a friend",
                     "frequency": 7
                 }
             }
