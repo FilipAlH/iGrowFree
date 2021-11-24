@@ -2,9 +2,8 @@ const { Schema, model } = require('mongoose');
 
 const LifeStyleSchema = new Schema(
     {
-        LifeStyleType: {
+        lifeStyleType: {
             type: String,
-            required: true,
 
         },
 
