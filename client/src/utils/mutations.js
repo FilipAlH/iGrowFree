@@ -61,8 +61,7 @@ export const ADD_HABIT = gql`
         addhabit(habitName: $habitName, timeLine: $timeLine, quantity: $quantity) {
         _id
         habitName
-        timeLine
-        quantity
+        frequency
         createdAt
         lifeStyles {
           _id
