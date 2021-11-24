@@ -56,3 +56,17 @@ export const LOGIN_USER = gql`
     }
 
 `;
+export const ADD_HABIT = gql`
+    mutation addhabit($habitName: String!, $timeLine: String!, $quantity: Int!)
+        addhabit(habitName: $habitName, timeLine: $timeLine, quantity: $quantity) {
+        _id
+        habitName
+        timeLine
+        quantity
+        createdAt
+        lifeStyles {
+          _id
+        }
+      }
+}
+`;

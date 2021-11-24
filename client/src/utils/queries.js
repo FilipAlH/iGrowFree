@@ -35,3 +35,28 @@ export const QUERY_ME = gql`
     }
   }
 `;
+export const QUERY_HABITS = gql`
+  query getHabits {
+    habits {
+      _id
+      habitName
+      timeLine
+      quantity
+      createdAt
+    }
+  }
+`;
+export const QUERY_SINGLE_HABIT = gql`
+  query getSingleHabit ($habitId: ID!) {
+    habit {
+      _id
+      habitName
+      timeLine
+      quantity
+      createdAt
+      LifeStyles {
+        _id
+      }
+    }
+  }
+`;
