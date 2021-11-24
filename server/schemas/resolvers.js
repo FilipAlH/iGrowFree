@@ -23,6 +23,14 @@ const resolvers = {
     habit: async (parent, { habitId }) => {
       return Habit.findOne({ _id: habitId });
     },
+
+    lifeStyle: async(parent, { LifeStyle }) => {
+      return await LifeStyle.findOne({ LifeStyleType: LifeStyle })
+    },
+
+    lifeStyles: async() => {
+      return await LifeStyle.find({})
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {

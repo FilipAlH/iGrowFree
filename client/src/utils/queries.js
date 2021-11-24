@@ -35,3 +35,16 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_LIFESTYLE = gql`
+    query getLifeStyle($LifeStyle: String!) {
+        lifeStyle(LifeStyleType: $LifeStyle) {
+            LifeStyleType
+            LifeStyleHabits {
+              name
+              frequency
+              
+            }
+        }
+    }
+`
