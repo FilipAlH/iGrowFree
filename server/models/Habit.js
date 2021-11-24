@@ -9,12 +9,7 @@ const habitSchema = new Schema({
         maxlength: 280,
         trim: true,
     },
-    timeLine: {
-        type: String,
-        required: 'hourly, daily, weekly ,monthly',
-        trim: true,
-    },
-    quantity: {
+    frequency: {
         type: Number,
         required: true,
     },
