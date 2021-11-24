@@ -3,28 +3,20 @@
         "LifeStyleType": "Athletic",
         "LifeStyleHabits": [
             {
-                "Habit": {
-                    "habitName": "Weight lifting",
-                    "frequency": 3
-                }
+                "habitName": "Weight lifting",
+                "frequency": 3
             },
             {
-                "Habit": {
-                    "habitName": "Counted calories",
-                    "frequency": 7
-                }
+                "habitName": "Counted calories",
+                "frequency": 7
             },
             {
-                "Habit": {
-                    "habitName": "Protein intake",
-                    "frequency": 5
-                }
+                "habitName": "Protein intake",
+                "frequency": 5
             },
             {
-                "Habit": {
-                    "habitName": "Cardio",
-                    "frequency": 3
-                }
+                "habitName": "Cardio",
+                "frequency": 3
             }
         ]
     },
@@ -32,28 +24,20 @@
         "LifeStyleType": "Mindful",
         "LifeStyleHabits": [
             {
-                "Habit": {
-                    "habitName": "Meditation",
-                    "frequency": 5
-                }
+                "habitName": "Meditation",
+                "frequency": 5
             },
             {
-                "Habit": {
-                    "habitName": "Journaling",
-                    "frequency": 5
-                }
+                "habitName": "Journaling",
+                "frequency": 5
             },
             {
-                "Habit": {
-                    "habitName": "Yoga",
-                    "frequency": 4
-                }
+                "habitName": "Yoga",
+                "frequency": 4
             },
             {
-                "Habit": {
-                    "habitName": "Nature break",
-                    "frequency": 4
-                }
+                "habitName": "Nature break",
+                "frequency": 4
             }
         ]
     },
@@ -61,28 +45,20 @@
         "LifeStyleType": "Knowledge seeking",
         "LifeStyleHabits": [
             {
-                "Habit": {
-                    "habitName": "Read chapter",
-                    "frequency": 7
-                }
+                "habitName": "Read chapter",
+                "frequency": 7
             },
             {
-                "Habit": {
-                    "habitName": "Learn something new",
-                    "frequency": 7
-                }
+                "habitName": "Learn something new",
+                "frequency": 7
             },
             {
-                "Habit": {
-                    "habitName": "Attend seminar",
-                    "frequency": 1
-                }
+                "habitName": "Attend seminar",
+                "frequency": 1
             },
             {
-                "Habit": {
-                    "habitName": "Intellectual conversation",
-                    "frequency": 3
-                }
+                "habitName": "Intellectual conversation",
+                "frequency": 3
             }
         ]
     },
@@ -90,28 +66,20 @@
         "LifeStyleType": "Social",
         "LifeStyleHabits": [
             {
-                "Habit": {
-                    "habitName": "Talk to a stranger",
-                    "frequency": 7
-                }
+                "habitName": "Talk to a stranger",
+                "frequency": 7
             },
             {
-                "Habit": {
-                    "habitName": "Hang out with friends",
-                    "frequency": 3
-                }
+                "habitName": "Hang out with friends",
+                "frequency": 3
             },
             {
-                "Habit": {
-                    "habitName": "Help a stranger",
-                    "frequency": 1
-                }
+                "habitName": "Help a stranger",
+                "frequency": 1
             },
             {
-                "Habit": {
-                    "habitName": "Message a friend",
-                    "frequency": 7
-                }
+                "habitName": "Message a friend",
+                "frequency": 7
             }
         ]
     }
