@@ -40,8 +40,7 @@ export const QUERY_HABITS = gql`
     habits {
       _id
       habitName
-      timeLine
-      quantity
+      frequency
       createdAt
     }
   }
@@ -51,8 +50,7 @@ export const QUERY_SINGLE_HABIT = gql`
     habit {
       _id
       habitName
-      timeLine
-      quantity
+      frequency
       createdAt
       LifeStyles {
         _id
@@ -60,3 +58,16 @@ export const QUERY_SINGLE_HABIT = gql`
     }
   }
 `;
+
+export const QUERY_LIFESTYLE = gql`
+    query getLifeStyle($LifeStyle: String!) {
+        lifeStyle(LifeStyleType: $LifeStyle) {
+            LifeStyleType
+            LifeStyleHabits {
+              habitName
+              frequency
+              
+            }
+        }
+    }
+`
