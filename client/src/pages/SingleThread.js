@@ -8,19 +8,19 @@ import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_THREAD } from '../utils/queries';
 
-const SingleThread = () => {
-    const {threadId} = useParams();
+// const SingleThread = () => {
+//     const {threadId} = useParams();
 
-    const { loading, data } = useQuery(QUERY_SINGLE_THREAD, {
-        variables: { threadId: threadId },
-    });
+//     const { loading, data } = useQuery(QUERY_SINGLE_THREAD, {
+//         variables: { threadId: threadId },
+//     });
 
-    const thread = data?.thread || {};
+//     const thread = data?.thread || {};
 
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-    return (
-        // format
-    )
-}
+//     if (loading) {
+//       return <div>Loading...</div>;
+//     }
+//     return (
+//         // format
+//     )
+//}

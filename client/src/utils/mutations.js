@@ -57,7 +57,7 @@ export const LOGIN_USER = gql`
 
 `;
 export const ADD_HABIT = gql`
-    mutation addhabit($habitName: String!, $timeLine: String!, $quantity: Int!)
+    mutation addhabit($habitName: String!, $timeLine: String!, $quantity: Int!) {
         addhabit(habitName: $habitName, timeLine: $timeLine, quantity: $quantity) {
         _id
         habitName
@@ -67,5 +67,16 @@ export const ADD_HABIT = gql`
           _id
         }
       }
+    }
+}
+`;
+
+export const REMOVE_HABIT = gql`
+    mutation removehabit($habitId: String!) {
+        removehabit(habitId: $habitId) {
+        _id
+        habitName
+      }
+    }
 }
 `;

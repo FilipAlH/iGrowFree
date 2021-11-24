@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const habitSchema = new Schema({
+const HabitSchema = new Schema({
     habitName: {
         type: String,
         required: 'Create Habit!',

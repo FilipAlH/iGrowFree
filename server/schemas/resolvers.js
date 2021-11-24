@@ -16,8 +16,8 @@ const resolvers = {
     me: async () => {
       return await User.find({});
     },
-    habits: async (parent, { lifeStyle }) => {
-      const params = lifeStyle ? { lifeStyle } : {};
+    habits: async (parent, { LifeStyle }) => {
+      const params = LifeStyle ? { LifeStyle } : {};
       return Habit.find(params).sort({ createdAt: -1 });
     },
     habit: async (parent, { habitId }) => {
