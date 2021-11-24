@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Comment, Thread, User, Habit, LifeStyle } = require('../models');
+const { Quote, Thread, User, Habit, LifeStyle } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -30,8 +30,12 @@ const resolvers = {
 
     lifeStyles: async() => {
       return await LifeStyle.find({})
-    }
-  },
+    },
+
+    quote: async (parent, { quoteId }) => {
+      return Quote.findOne({ _id: quoteId });
+      }
+    },
   Mutation: {
     addUser: async (parent, args) => {
       const newUser = await User.create(args);

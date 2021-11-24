@@ -38,7 +38,12 @@ const typeDefs = gql`
     type Auth {
         token: ID
         user: User
-    }        
+    } 
+    type Quote {
+        _id: ID
+        description: String
+        author: String
+    }       
     type Query {
         me: [User]
         threads(username: String): [Thread]
@@ -47,6 +52,7 @@ const typeDefs = gql`
         habit(habitId: ID!): Habit
         lifeStyle(LifeStyleType: String!): LifeStyle
         lifeStyles: [LifeStyle]
+        quote(quoteId: ID!): Quote
     }
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth    
