@@ -10,9 +10,15 @@ const LifeStyleSchema = new Schema(
 
         LifeStyleHabits: [
             {
-                Habit: {
-                   type: String 
-                }
+                habitName: {
+                    type: String,
+                    required: true,
+                },
+
+                frequency: {
+                    type: Number,
+                    required: true
+                },
             }
         ]
     }
