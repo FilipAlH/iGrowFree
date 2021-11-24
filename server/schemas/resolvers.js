@@ -24,8 +24,9 @@ const resolvers = {
       return Habit.findOne({ _id: habitId });
     },
 
-    lifeStyle: async (parent, { LifeStyle }) => {
-      return await LifeStyle.findOne({ LifeStyleType: LifeStyle })
+    lifeStyle: async (parent,  { lifeStyleType }) => {
+      console.log(lifeStyleType)
+      return await LifeStyle.findOne({ lifeStyleType: lifeStyleType });
     },
 
     lifeStyles: async () => {

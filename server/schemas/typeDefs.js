@@ -4,8 +4,14 @@ const typeDefs = gql`
 
     type LifeStyle {
         _id: ID
-        LifeStyleType: String!
-        LifeStyleHabits: [Habit]
+        lifeStyleType: String!
+        LifeStyleHabits: [LifeStyleHabit]
+    }
+    
+    type LifeStyleHabit {
+        _id: ID
+        habitName: String
+        frequency: Int
     }
 
     type Habit {
@@ -50,7 +56,7 @@ const typeDefs = gql`
         thread(threadId: ID!): Thread
         habits(lifeStyle: String): [Habit]
         habit(habitId: ID!): Habit
-        lifeStyle(LifeStyleType: String!): LifeStyle
+        lifeStyle(lifeStyleType: String!): LifeStyle
         lifeStyles: [LifeStyle]
         quote(quoteId: ID!): Quote
     }

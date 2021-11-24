@@ -1,6 +1,6 @@
 [
     {
-        "LifeStyleType": "Athletic",
+        "lifeStyleType": "Athletic",
         "LifeStyleHabits": [
             {
                 "habitName": "Weight lifting",
@@ -21,7 +21,7 @@
         ]
     },
     {
-        "LifeStyleType": "Mindful",
+        "lifeStyleType": "Mindful",
         "LifeStyleHabits": [
             {
                 "habitName": "Meditation",
@@ -42,7 +42,7 @@
         ]
     },
     {
-        "LifeStyleType": "Knowledge seeking",
+        "lifeStyleType": "Knowledge seeking",
         "LifeStyleHabits": [
             {
                 "habitName": "Read chapter",
@@ -63,7 +63,7 @@
         ]
     },
     {
-        "LifeStyleType": "Social",
+        "lifeStyleType": "Social",
         "LifeStyleHabits": [
             {
                 "habitName": "Talk to a stranger",
