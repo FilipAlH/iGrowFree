@@ -1,0 +1,118 @@
+[
+    {
+        "LifeStyleType": "Athletic",
+        "LifeStyleHabits": [
+            {
+                "Habit": {
+                    "name": "Weight lifting",
+                    "frequency": 3
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Counted calories",
+                    "frequency": 7
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Protein intake",
+                    "frequency": 5
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Cardio",
+                    "frequency": 3
+                }
+            }
+        ]
+    },
+    {
+        "LifeStyleType": "Mindful",
+        "LifeStyleHabits": [
+            {
+                "Habit": {
+                    "name": "Meditation",
+                    "frequency": 5
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Journaling",
+                    "frequency": 5
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Yoga",
+                    "frequency": 4
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Nature break",
+                    "frequency": 4
+                }
+            }
+        ]
+    },
+    {
+        "LifeStyleType": "Knowledge seeking",
+        "LifeStyleHabits": [
+            {
+                "Habit": {
+                    "name": "Read chapter",
+                    "frequency": 7
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Learn something new",
+                    "frequency": 7
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Attend seminar",
+                    "frequency": 1
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Intellectual conversation",
+                    "frequency": 3
+                }
+            }
+        ]
+    },
+    {
+        "LifeStyleType": "Social",
+        "LifeStyleHabits": [
+            {
+                "Habit": {
+                    "name": "Talk to a stranger",
+                    "frequency": 7
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Hang out with friends",
+                    "frequency": 3
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Help a stranger",
+                    "frequency": 1
+                }
+            },
+            {
+                "Habit": {
+                    "name": "Message a friend",
+                    "frequency": 7
+                }
+            }
+        ]
+    }
+]

@@ -1,6 +1,12 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+    type LifeStyle {
+        _id: ID
+        LifeStyleType: String!
+        LifeStyleHabits: [Habit]
+    }
+
     type habit {
     habitId: String!
     habitName: String!
@@ -38,6 +44,8 @@ const typeDefs = gql`
         thread(threadId: ID!): Thread
         habits(lifeStyle: String): [Habit]
         habit(habitId: ID!): Habit
+        lifeStyle(LifeStyleType: String!): LifeStyle
+        lifeStyles: [LifeStyle]
     }
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth    
