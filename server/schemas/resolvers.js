@@ -24,11 +24,11 @@ const resolvers = {
       return Habit.findOne({ _id: habitId });
     },
 
-    lifeStyle: async(parent, { LifeStyle }) => {
+    lifeStyle: async (parent, { LifeStyle }) => {
       return await LifeStyle.findOne({ LifeStyleType: LifeStyle })
     },
 
-    lifeStyles: async() => {
+    lifeStyles: async () => {
       return await LifeStyle.find({})
     }
   },
@@ -135,12 +135,12 @@ const resolvers = {
         const habit = await Habit.findOneAndDelete({
           _id: habitId,
         });
-  
+
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { habits: habit._id } }
         );
-  
+
         return habit;
       }
       throw new AuthenticationError('You need to be logged in!');
