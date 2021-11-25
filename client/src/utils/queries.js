@@ -71,3 +71,15 @@ export const QUERY_LIFESTYLE = gql`
         }
     }
 `
+export const QUERY_LIFESTYLES = gql`
+    query getLifeStyles {
+        lifeStyles {
+            LifeStyleType
+            LifeStyleHabits {
+              habitName
+              frequency
+              
+            }
+        }
+    }
+`

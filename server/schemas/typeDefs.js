@@ -4,8 +4,14 @@ const typeDefs = gql`
 
     type LifeStyle {
         _id: ID
-        LifeStyleType: String!
-        LifeStyleHabits: [Habit]
+        lifeStyleType: String!
+        LifeStyleHabits: [LifeStyleHabit]
+    }
+    
+    type LifeStyleHabit {
+        _id: ID
+        habitName: String
+        frequency: Int
     }
 
     type Habit {
@@ -39,15 +45,21 @@ const typeDefs = gql`
     type Auth {
         token: ID
         user: User
-    }        
+    } 
+    type Quote {
+        _id: ID
+        description: String
+        author: String
+    }       
     type Query {
         me: [User]
         threads: [Thread]
         thread(threadId: ID!): Thread
         habits(lifeStyle: String): [Habit]
         habit(habitId: ID!): Habit
-        lifeStyle(LifeStyleType: String!): LifeStyle
+        lifeStyle(lifeStyleType: String!): LifeStyle
         lifeStyles: [LifeStyle]
+        quote(quoteId: ID!): Quote
     }
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth    

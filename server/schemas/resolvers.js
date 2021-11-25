@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Thread, User, Habit, LifeStyle } = require('../models');
+const { Quote, Thread, User, Habit, LifeStyle } = require('../models');
+
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -23,14 +24,19 @@ const resolvers = {
       return Habit.findOne({ _id: habitId });
     },
 
-    lifeStyle: async (parent, { LifeStyle }) => {
-      return await LifeStyle.findOne({ LifeStyleType: LifeStyle })
+    lifeStyle: async (parent,  { lifeStyleType }) => {
+      console.log(lifeStyleType)
+      return await LifeStyle.findOne({ lifeStyleType: lifeStyleType });
     },
 
     lifeStyles: async () => {
       return await LifeStyle.find({})
-    }
-  },
+    },
+
+    quote: async (parent, { quoteId }) => {
+      return Quote.findOne({ _id: quoteId });
+      }
+    },
   Mutation: {
     addUser: async (parent, args) => {
       const newUser = await User.create(args);
