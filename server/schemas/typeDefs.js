@@ -55,7 +55,7 @@ const typeDefs = gql`
         me: [User]
         threads: [Thread]
         thread(threadId: ID!): Thread
-        habits(lifeStyle: String): [Habit]
+        habits: [Habit]
         habit(habitId: ID!): Habit
         lifeStyle(lifeStyleType: String!): LifeStyle
         lifeStyles: [LifeStyle]
@@ -68,7 +68,7 @@ const typeDefs = gql`
         addComment(threadId: ID!, commentText: String!): Thread
         removeThread(threadId: ID!): Thread
         removeComment(threadId: ID!, commentId: ID!): Thread
-        addHabit(habitId: ID!, habitName: String!, frequency: Int!): Habit
+        addHabit(habitName: String!, frequency: Int!): Habit
         removeHabit(habitId: String!): Habit
     }
 `;
