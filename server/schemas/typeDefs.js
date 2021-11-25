@@ -13,7 +13,7 @@ const typeDefs = gql`
         habitName: String
         frequency: Int
     }
-
+   
     type Habit {
         _id: ID!
         habitName: String!
@@ -41,9 +41,11 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
+        password: String
+        userLifeStyle: String
     }
     type Auth {
-        token: ID
+        token: ID!
         user: User
     } 
     type Quote {
@@ -53,6 +55,7 @@ const typeDefs = gql`
     }       
     type Query {
         me: [User]
+        user(username: String!): User
         threads: [Thread]
         thread(threadId: ID!): Thread
         habits(lifeStyle: String): [Habit]
@@ -62,7 +65,7 @@ const typeDefs = gql`
         quote(quoteId: ID!): Quote
     }
     type Mutation {
-        addUser(username: String!, email: String!, password: String!): Auth    
+        addUser(username: String!, email: String!, password: String!): User 
         login(email: String!, password: String!): Auth
         addThread(threadText: String!): Thread
         addComment(threadId: ID!, commentText: String!): Thread
