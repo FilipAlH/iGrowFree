@@ -1,12 +1,12 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { Quote, Thread, User, Habit, LifeStyle } = require('../models');
+
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    threads: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Thread.find(params).sort({ createdAt: -1 });
+    threads: async () => {
+      return await Thread.find({}).populate('ThreadAuthor', 'username');
     },
 
     thread: async (parent, { threadId }) => {
