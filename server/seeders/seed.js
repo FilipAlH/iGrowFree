@@ -4,8 +4,7 @@ const { Thread, User, LifeStyle, Habit, Quote } = require('../models');
 const LifeStyleSeeds = require('./lifestyleseeds.json')
 const userData = require('./userData.json');
 const habitSeeds = require('./habitSeeds.json')
-const threadData = require('./threadData.json');
-const quoteSeeds = require('./quotes.json')
+const quoteSeeds = require('./quoteSeeds.json')
 
 
 db.once('open', async () => {
