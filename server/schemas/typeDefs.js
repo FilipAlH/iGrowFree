@@ -23,10 +23,11 @@ const typeDefs = gql`
     
     type Thread {
         _id: ID
-        threadText: String
-        threadAuthor: String
+        ThreadTitle: String!
+        ThreadText: String!
+        ThreadAuthor: User
         createdAt: String
-        comments: [Comment]!
+        comments: [Comment]
     }
 
     type Comment {
@@ -52,7 +53,7 @@ const typeDefs = gql`
     }       
     type Query {
         me: [User]
-        threads(username: String): [Thread]
+        threads: [Thread]
         thread(threadId: ID!): Thread
         habits(lifeStyle: String): [Habit]
         habit(habitId: ID!): Habit
