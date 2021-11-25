@@ -2,8 +2,8 @@ import { gql } from '@apollo/client';
 
 
 export const ADD_THREAD = gql`
-  mutation addThread($threadText: String!) {
-    addthread(threadText: $threadText) {
+  mutation addThread($threadText: String!, $threadTitle: String!) {
+    addthread(threadText: $threadText, threadTitle: $threadTitle) {
       _id
       threadText
       threadAuthor

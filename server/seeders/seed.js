@@ -5,6 +5,7 @@ const LifeStyleSeeds = require('./lifestyleseeds.json')
 const userData = require('./userData.json');
 const habitSeeds = require('./habitSeeds.json')
 const quoteSeeds = require('./quoteSeeds.json')
+const threadData = require('./threadData.json')
 
 
 db.once('open', async () => {
@@ -14,6 +15,12 @@ db.once('open', async () => {
     await Thread.deleteMany({});
     await Habit.deleteMany({})
     await Quote.deleteMany({})
+
+    // bulk create each model
+    const users = await User.insertMany(userData);
+    await LifeStyle.create(LifeStyleSeeds)
+    // await Habit.create({habitSeeds})
+    // await Quote.create({quoteSeeds})
   
     for (const thread of threadData){
         await Thread.create({
@@ -23,11 +30,7 @@ db.once('open', async () => {
         });
     };
 
-    // bulk create each model
-    const users = await User.insertMany(userData);
-    await LifeStyle.create(LifeStyleSeeds)
-    await Habit.create({habitSeeds})
-    await Quote.create({quoteSeeds})
+
 
     console.log('all done!');
     process.exit(0);
