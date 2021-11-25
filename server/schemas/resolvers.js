@@ -16,6 +16,10 @@ const resolvers = {
     me: async () => {
       return await User.find({});
     },
+    user: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return User.findOne(params);
+    },
     habits: async (parent, { LifeStyle }) => {
       const params = LifeStyle ? { LifeStyle } : {};
       return Habit.find(params).sort({ createdAt: -1 });
@@ -24,7 +28,7 @@ const resolvers = {
       return Habit.findOne({ _id: habitId });
     },
 
-    lifeStyle: async (parent,  { lifeStyleType }) => {
+    lifeStyle: async (parent, { lifeStyleType }) => {
       console.log(lifeStyleType)
       return await LifeStyle.findOne({ lifeStyleType: lifeStyleType });
     },
@@ -35,28 +39,29 @@ const resolvers = {
 
     quote: async (parent, { quoteId }) => {
       return Quote.findOne({ _id: quoteId });
-      }
-    },
+    }
+  },
   Mutation: {
-    addUser: async (parent, args) => {
-      const newUser = await User.create(args);
-      const token = signToken(newUser);
-      return { token, user: newUser };
+    addUser: async (parent, { username, email, password }) => {
+      const newUser = await User.create({ username, email, password });
+      // const token = signToken(newUser);
+      // return { token, newUser };
+      return newUser;
     },
 
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-      if (!user) {
-        throw new AuthenticationError('User Not Found');
-      }
+    // login: async (parent, { email, password }) => {
+    //   const user = await User.findOne({ email });
+    //   if (!user) {
+    //     throw new AuthenticationError('User Not Found');
+    //   }
 
-      const correctPw = await user.isCorrectPassword(password);
-      if (!correctPw) {
-        throw new AuthenticationError('Credentials does not match');
-      }
+    // const correctPw = await user.isCorrectPassword(password);
+    // if(!correctPw) {
+    //   throw new AuthenticationError('Credentials does not match');
+    // }
 
-      const token = signToken(user);
-
+    //   const token = signToken(user);
+    
       return { token, user };
     },
     addThread: async (parent, { threadText, threadTitle }, context) => {
@@ -125,16 +130,15 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addHabit: async (parent, { habitName }, context) => {
-      if (context.user) {
+    addHabit: async (parent, { habitName, frequency }) => {
+      // if (context.user) {
         const habit = await Habit.create({
           habitName,
-          timeLine,
-          quantity,
+          frequency,
         });
-        return habit;
-      }
-      throw new AuthenticationError('You need to be logged in!');
+         return habit;
+      // }
+      // throw new AuthenticationError('You need to be logged in!');
     },
     removeHabit: async (parent, { habitId }, context) => {
       if (context.user) {
@@ -153,6 +157,7 @@ const resolvers = {
     },
   },
 }
-  
+
 
 module.exports = resolvers;
+//remove auth requirements

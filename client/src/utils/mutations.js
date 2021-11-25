@@ -57,8 +57,8 @@ export const LOGIN_USER = gql`
 
 `;
 export const ADD_HABIT = gql`
-    mutation addHabit($habitName: String!, $timeLine: String!, $quantity: Int!) {
-        addHabit(habitName: $habitName, timeLine: $timeLine, quantity: $quantity) {
+    mutation addHabit($habitName: String!, $frequency: Int!) {
+        addHabit(habitName: $habitName, frequency: $frequency) {
         _id
         habitName
         frequency
