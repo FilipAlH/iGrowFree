@@ -14,10 +14,15 @@ const userSchema = new Schema(
             unique: true,
             match: [/.+@.+\..+/, 'Must use a valid email address'],
         },
-        // password: {
-        //     type: String,
-        //     required: true,
-        // }
+        password: {
+            type: String,
+            required: true,
+            minlength: 5,
+        },
+        userLifeStyle: {
+            type: String,
+
+        },
     },
     // set this to use virtual below
     {

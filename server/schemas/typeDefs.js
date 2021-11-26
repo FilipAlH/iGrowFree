@@ -13,7 +13,7 @@ const typeDefs = gql`
         habitName: String
         frequency: Int
     }
-
+   
     type Habit {
         _id: ID!
         habitName: String!
@@ -41,9 +41,11 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
+        password: String
+        userLifeStyle: String
     }
     type Auth {
-        token: ID
+        token: ID!
         user: User
     } 
     type Quote {
@@ -53,25 +55,28 @@ const typeDefs = gql`
     }       
     type Query {
         me: [User]
+        user(username: String!): User
         threads: [Thread]
         thread(threadId: ID!): Thread
-        habits(lifeStyle: String): [Habit]
+        habits: [Habit]
         habit(habitId: ID!): Habit
         lifeStyle(lifeStyleType: String!): LifeStyle
         lifeStyles: [LifeStyle]
         quote(quoteId: ID!): Quote
     }
     type Mutation {
-        addUser(username: String!, email: String!, password: String!): Auth    
+        addUser(username: String!, email: String!, userLifeStyle: String! password: String!): Auth 
         login(email: String!, password: String!): Auth
         addThread(threadText: String!, threadTitle: String!): Thread
         addComment(threadId: ID!, commentText: String!): Thread
         removeThread(threadId: ID!): Thread
         removeComment(threadId: ID!, commentId: ID!): Thread
-        addHabit(habitId: ID!, habitName: String!, frequency: Int!): Habit
+        addHabit(habitName: String!, frequency: Int!): Habit
         removeHabit(habitId: String!): Habit
     }
 `;
 
 
 module.exports = typeDefs;
+
+// romal - add auth to addUser mutations
