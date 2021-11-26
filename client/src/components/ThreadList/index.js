@@ -21,9 +21,9 @@ const ThreadList = ({
               {showUsername ? (
                 <Link
                   className="text-light"
-                  to={`/profiles/${thread.threadAuthor}`}
+                  to={`/profiles/${thread.ThreadAuthor.username}`}
                 >
-                  {thread.threadAuthor} <br />
+                  {thread.ThreadAuthor.username} <br />
                   <span style={{ fontSize: '1rem' }}>
                     had this thread on {thread.createdAt}
                   </span>
@@ -37,7 +37,7 @@ const ThreadList = ({
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{thread.threadText}</p>
+              <p>{thread.ThreadText}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"

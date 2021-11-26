@@ -15,18 +15,18 @@ const SingleThread = () => {
       variables: { threadId: threadId },
     });
 
-    const thread = data.thread || {};
+    const thread = data?.thread || {};
 
     if (loading) {
       return <div>Loading...</div>;
     } else{
-      console.log(thread.ThreadAuthor)
+      console.log(thread.ThreadAuthor.username)
     }
 
     return (
         <div className="my-3">
         <h3 className="card-header bg-dark text-light p-2 m-0">
-          {thread.threadAuthor} <br />
+          {thread.ThreadAuthor.username} <br />
           <span style={{ fontSize: '1rem' }}>
             created this thread on {thread.createdAt}
           </span>
