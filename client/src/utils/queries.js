@@ -25,7 +25,9 @@ export const QUERY_SINGLE_THREAD = gql`
         commentAuthor
         createdAt
       }
-    `;
+    }
+  }
+`;
 
 export const QUERY_ME = gql`
   query me{
@@ -62,7 +64,7 @@ export const QUERY_SINGLE_HABIT = gql`
 export const QUERY_LIFESTYLE = gql`
     query getLifeStyle($LifeStyle: String!) {
         lifeStyle(LifeStyleType: $LifeStyle) {
-            LifeStyleType
+            lifeStyleType
             LifeStyleHabits {
               habitName
               frequency
@@ -74,7 +76,7 @@ export const QUERY_LIFESTYLE = gql`
 export const QUERY_LIFESTYLES = gql`
     query getLifeStyles {
         lifeStyles {
-            LifeStyleType
+            lifeStyleType
             LifeStyleHabits {
               habitName
               frequency

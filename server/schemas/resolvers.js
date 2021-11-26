@@ -167,6 +167,5 @@ module.exports = resolvers;
 
 
 // romal - add login mutations back and remove coments on addUser to have auth working
-=======
 //remove auth requirements
 
