@@ -5,8 +5,8 @@ export const QUERY_THREADS = gql`
   query getThreads {
     threads {
       _id
-      threadText
-      threadAuthor
+      ThreadText
+      ThreadAuthor
       createdAt
     }
   }
@@ -16,8 +16,8 @@ export const QUERY_SINGLE_THREAD = gql`
   query getSingleThread($threadId: ID!) {
     thread(threadId: $threadId) {
       _id
-      threadText
-      threadAuthor
+      ThreadText
+      ThreadAuthor
       createdAt
       comments {
         _id
@@ -25,7 +25,9 @@ export const QUERY_SINGLE_THREAD = gql`
         commentAuthor
         createdAt
       }
-    `;
+    }
+  }
+`;
 
 export const QUERY_ME = gql`
   query me{

@@ -10,10 +10,11 @@ const resolvers = {
     },
 
     thread: async (parent, { threadId }) => {
-      return Thread.findOne({ _id: threadId });
+      return Thread.findOne({ _id: threadId }).populate('ThreadAuthor');
     },
 
     me: async () => {
+      // add .populate('Threads') to query user's threads
       return await User.find({});
     },
     habits: async (parent, { LifeStyle }) => {

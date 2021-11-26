@@ -68,7 +68,6 @@ export const ADD_HABIT = gql`
         }
       }
     }
-}
 `;
 
 export const REMOVE_HABIT = gql`
@@ -78,5 +77,4 @@ export const REMOVE_HABIT = gql`
         habitName
       }
     }
-}
 `;

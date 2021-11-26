@@ -11,7 +11,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 // import Home from './pages/Home';
 // import Signup from './pages/Signup';
 // import Login from './pages/Login';
-// import SingleThread from './pages/SingleThread';
+import SingleThread from './pages/SingleThread';
+import BlogThreads from './pages/Blog'
 // import Profile from './pages/User';
 // import Header from './components/Header';
 // import Footer from './components/Footer';
@@ -45,12 +46,12 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          {/* <Header />
+          {/* <Header /> */}
           <div className="container">
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
+            {/* <Route exact path="/"> */}
+              {/* <Home /> */}
+            {/* </Route> */}
+            {/* <Route exact path="/login">
               <Login />
             </Route>
             <Route exact path="/signup">
@@ -58,15 +59,18 @@ function App() {
             </Route>
             <Route exact path="/me">
               <Profile />
-            </Route>
-            <Route exact path="/profiles/:username">
+            </Route> */}
+            {/* <Route exact path="/profiles/:username">
               <Profile />
-            </Route>
+            </Route> */}
             <Route exact path="/threads/:threadId">
               <SingleThread />
             </Route>
+            <Route exact path="/threads">
+              <BlogThreads />
+            </Route>
           </div>
-          <Footer /> */}
+          {/* <Footer /> */}
         </div>
       </Router>
     </ApolloProvider>
