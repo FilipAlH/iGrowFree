@@ -12,14 +12,19 @@ const resolvers = {
     thread: async (parent, { threadId }) => {
       return Thread.findOne({ _id: threadId }).populate('ThreadAuthor');
     },
-
+    
     me: async () => {
-      // add .populate('Threads') to query user's threads
-      return await User.find({});
+      return await User.find({}).populate('userThreads').populate({
+        path: 'me',
+        populate: 'userHabits'
+      });
     },
     user: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return User.findOne(params);
+      return User.findOne(params).populate('userThreads').populate({
+        path: 'me',
+        populate: 'userHabits'
+      });
     },
     habits: async (parent, { LifeStyle }) => {
       const params = LifeStyle ? { LifeStyle } : {};
@@ -167,6 +172,6 @@ module.exports = resolvers;
 
 
 
-// romal - add login mutations back and remove coments on addUser to have auth working
+// romal - add login mutations back and remove coments on addUser to have auth workingm
 //remove auth requirements
 

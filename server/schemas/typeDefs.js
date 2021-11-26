@@ -43,6 +43,8 @@ const typeDefs = gql`
         email: String
         password: String
         userLifeStyle: String
+        userThreads: [Thread]
+        userHabits: [Habit]
     }
     type Auth {
         token: ID!
