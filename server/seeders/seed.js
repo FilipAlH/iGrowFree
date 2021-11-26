@@ -15,10 +15,12 @@ db.once('open', async () => {
     await Thread.deleteMany({});
     await Habit.deleteMany({})
     await Quote.deleteMany({})
+
     const users = await User.create(userData);
     await LifeStyle.create(LifeStyleSeeds)
     await Habit.create(habitSeeds)
     await Quote.create(quoteSeeds)
+  
     for (const thread of threadData) {
         await Thread.create({
             ...thread,
@@ -26,9 +28,6 @@ db.once('open', async () => {
             ThreadAuthor: users[Math.floor(Math.random() * users.length)].id
         });
     };
-
-    // bulk create each model
-
 
     console.log('all done!');
     process.exit(0);

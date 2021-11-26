@@ -6,7 +6,7 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     threads: async () => {
-      return await Thread.find({}).populate('ThreadAuthor', 'username');
+      return await Thread.find({}).populate('ThreadAuthor', 'username').sort({ createdAt: -1 });
     },
 
     thread: async (parent, { threadId }) => {
@@ -60,14 +60,17 @@ const resolvers = {
         throw new AuthenticationError('Credentials does not match');
       }
 
+
       const token = signToken(user);
 
       return { token, user };
     },
-    addThread: async (parent, { threadText }, context) => {
+    addThread: async (parent, { threadText, threadTitle }, context) => {
+
       if (context.user) {
         const thread = await Thread.create({
           threadText,
+          threadTitle,
           threadAuthor: context.user.username,
         });
 
@@ -162,4 +165,8 @@ module.exports = resolvers;
 
 
 
+
 // romal - add login mutations back and remove coments on addUser to have auth working
+=======
+//remove auth requirements
+
