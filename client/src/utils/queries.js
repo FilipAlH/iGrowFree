@@ -28,14 +28,9 @@ query getSingleThread($threadId: ID!) {
       commentText
       commentAuthor
       createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
     }
   }
+}
 `;
 
 export const QUERY_ME = gql`
@@ -73,7 +68,7 @@ export const QUERY_SINGLE_HABIT = gql`
 export const QUERY_LIFESTYLE = gql`
     query getLifeStyle($LifeStyle: String!) {
         lifeStyle(LifeStyleType: $LifeStyle) {
-            lifeStyleType
+            LifeStyleType
             LifeStyleHabits {
               habitName
               frequency
@@ -85,7 +80,7 @@ export const QUERY_LIFESTYLE = gql`
 export const QUERY_LIFESTYLES = gql`
     query getLifeStyles {
         lifeStyles {
-            lifeStyleType
+            LifeStyleType
             LifeStyleHabits {
               habitName
               frequency
