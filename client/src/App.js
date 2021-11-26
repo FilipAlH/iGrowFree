@@ -8,10 +8,12 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
+// import Home from './pages/Home';
+import SingleThread from './pages/SingleThread';
+import BlogThreads from './pages/Blog'
 import SignupForm from './pages/SignupForm';
 import LoginForm from './pages/LoginForm';
-// import SingleThread from './pages/SingleThread';
+
 // import Profile from './pages/User';
 import Header from './components/Header/Header';
 // import Footer from './components/Footer';
@@ -58,13 +60,16 @@ function App() {
             </Route>
             {/* <Route exact path="/me">
               <Profile />
-            </Route>
-            <Route exact path="/profiles/:username">
+            </Route> */}
+            {/* <Route exact path="/profiles/:username">
               <Profile />
-            </Route>
+            </Route> */}
             <Route exact path="/threads/:threadId">
               <SingleThread />
-            </Route> */}
+            </Route>
+            <Route exact path="/threads">
+              <BlogThreads />
+            </Route>
           </div>
           {/* <Footer /> */}
         </div>
