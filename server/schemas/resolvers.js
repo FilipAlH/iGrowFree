@@ -42,29 +42,31 @@ const resolvers = {
     }
   },
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const newUser = await User.create({ username, email, password });
-      // const token = signToken(newUser);
-      // return { token, newUser };
-      return newUser;
+    addUser: async (parent, { username, email, userLifeStyle, password }) => {
+      const newUser = await User.create({ username, email, userLifeStyle, password });
+      const token = signToken(newUser);
+      return { token, newUser };
+      // return newUser;
     },
 
-    // login: async (parent, { email, password }) => {
-    //   const user = await User.findOne({ email });
-    //   if (!user) {
-    //     throw new AuthenticationError('User Not Found');
-    //   }
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError('User Not Found');
+      }
 
-    // const correctPw = await user.isCorrectPassword(password);
-    // if(!correctPw) {
-    //   throw new AuthenticationError('Credentials does not match');
-    // }
+      const correctPw = await user.isCorrectPassword(password);
+      if (!correctPw) {
+        throw new AuthenticationError('Credentials does not match');
+      }
 
-    //   const token = signToken(user);
-    
+
+      const token = signToken(user);
+
       return { token, user };
     },
     addThread: async (parent, { threadText, threadTitle }, context) => {
+
       if (context.user) {
         const thread = await Thread.create({
           threadText,
@@ -132,11 +134,11 @@ const resolvers = {
     },
     addHabit: async (parent, { habitName, frequency }) => {
       // if (context.user) {
-        const habit = await Habit.create({
-          habitName,
-          frequency,
-        });
-         return habit;
+      const habit = await Habit.create({
+        habitName,
+        frequency,
+      });
+      return habit;
       // }
       // throw new AuthenticationError('You need to be logged in!');
     },
@@ -160,4 +162,11 @@ const resolvers = {
 
 
 module.exports = resolvers;
+
+
+
+
+// romal - add login mutations back and remove coments on addUser to have auth working
+=======
 //remove auth requirements
+

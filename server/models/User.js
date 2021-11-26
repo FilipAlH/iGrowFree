@@ -19,10 +19,9 @@ const userSchema = new Schema(
             required: true,
             minlength: 5,
         },
-        userLifeStyle:
-        {
+        userLifeStyle: {
             type: String,
-            required: true
+
         },
     },
     // set this to use virtual below

@@ -33,8 +33,8 @@ export const ADD_COMMENT = gql`
 `;
 
 export const ADD_USER = gql`
-    mutation addUser($username: String!, $email: String!, $password: String!) {
-        addUser(username: $username, email: $email, password: $password) {
+    mutation addUser($username: String!, $email: String!, $userLifeStyle: String! $password: String!) {
+        addUser(username: $username, email: $email, userLifeStyle: $userLifeStyle password: $password) {
             token
             user {
                 _id
@@ -56,6 +56,7 @@ export const LOGIN_USER = gql`
     }
 
 `;
+
 export const ADD_HABIT = gql`
     mutation addHabit($habitName: String!, $frequency: Int!) {
         addHabit(habitName: $habitName, frequency: $frequency) {
@@ -68,7 +69,7 @@ export const ADD_HABIT = gql`
         }
       }
     }
-}
+
 `;
 
 export const REMOVE_HABIT = gql`
@@ -78,5 +79,5 @@ export const REMOVE_HABIT = gql`
         habitName
       }
     }
-}
+
 `;

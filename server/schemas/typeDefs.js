@@ -65,7 +65,7 @@ const typeDefs = gql`
         quote(quoteId: ID!): Quote
     }
     type Mutation {
-        addUser(username: String!, email: String!, password: String!): User 
+        addUser(username: String!, email: String!, userLifeStyle: String! password: String!): Auth 
         login(email: String!, password: String!): Auth
         addThread(threadText: String!, threadTitle: String!): Thread
         addComment(threadId: ID!, commentText: String!): Thread
@@ -78,3 +78,5 @@ const typeDefs = gql`
 
 
 module.exports = typeDefs;
+
+// romal - add auth to addUser mutations
