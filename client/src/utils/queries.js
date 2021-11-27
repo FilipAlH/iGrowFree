@@ -2,31 +2,35 @@ import { gql } from '@apollo/client';
 
 
 export const QUERY_THREADS = gql`
-  query getThreads {
-    threads {
-      _id
-      threadText
-      threadAuthor
-      createdAt
+query getThreads {
+  threads {
+    _id
+    ThreadText
+    ThreadAuthor{
+      username
     }
+    createdAt
   }
+}
 `;
 
 export const QUERY_SINGLE_THREAD = gql`
-  query getSingleThread($threadId: ID!) {
-    thread(threadId: $threadId) {
+query getSingleThread($threadId: ID!) {
+  thread(threadId: $threadId) {
+    _id
+    ThreadText
+    ThreadAuthor{
+      username
+    }
+    createdAt
+    comments {
       _id
-      threadText
-      threadAuthor
+      commentText
+      commentAuthor
       createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
     }
   }
+}
 `;
 
 export const QUERY_ME = gql`
@@ -64,7 +68,7 @@ export const QUERY_SINGLE_HABIT = gql`
 export const QUERY_LIFESTYLE = gql`
     query getLifeStyle($LifeStyle: String!) {
         lifeStyle(LifeStyleType: $LifeStyle) {
-            lifeStyleType
+            LifeStyleType
             LifeStyleHabits {
               habitName
               frequency
@@ -76,7 +80,7 @@ export const QUERY_LIFESTYLE = gql`
 export const QUERY_LIFESTYLES = gql`
     query getLifeStyles {
         lifeStyles {
-            lifeStyleType
+            LifeStyleType
             LifeStyleHabits {
               habitName
               frequency

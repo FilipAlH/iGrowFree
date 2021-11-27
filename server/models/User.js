@@ -23,6 +23,18 @@ const userSchema = new Schema(
             type: String,
 
         },
+        userThreads: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Thread',
+            },
+        ],
+        userHabits: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Habit',
+            },
+        ],
     },
     // set this to use virtual below
     {
