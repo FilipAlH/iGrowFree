@@ -11,12 +11,12 @@ const Home = () => {
     console.log(lifeStyles)
 
     return(
-        <main>
+        <div className="w-screen">
             {loading ? (<h3>Loading...</h3>) : 
             (
                 <Lifestylepreview lifeStyles = {lifeStyles}/>
             )}
-        </main>
+        </div>
     )
 }
 
