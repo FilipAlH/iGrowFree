@@ -37,6 +37,7 @@ export const QUERY_ME = gql`
   query me{
     me {
       username
+      userLifeStyle
 
     }
   }
@@ -66,9 +67,21 @@ export const QUERY_SINGLE_HABIT = gql`
 `;
 
 export const QUERY_LIFESTYLE = gql`
-    query getLifeStyle($LifeStyle: String!) {
-        lifeStyle(LifeStyleType: $LifeStyle) {
-            LifeStyleType
+query getLifeStyle($LifeStyle: String!) {
+  lifeStyle(lifeStyleType: $LifeStyle) {
+      lifeStyleType
+      LifeStyleHabits {
+        habitName
+        frequency
+        
+      }
+  }
+}
+`
+export const QUERY_LIFESTYLES = gql`
+    query getLifeStyles {
+        lifeStyles {
+            lifeStyleType
             LifeStyleHabits {
               habitName
               frequency
@@ -77,15 +90,12 @@ export const QUERY_LIFESTYLE = gql`
         }
     }
 `
-export const QUERY_LIFESTYLES = gql`
-    query getLifeStyles {
-        lifeStyles {
-            LifeStyleType
-            LifeStyleHabits {
-              habitName
-              frequency
-              
-            }
-        }
-    }
+
+export const QUERY_USER = gql`
+query user ($username: String!) {
+  user (username:$username) {
+      username
+      userLifeStyle
+  }
+}
 `
