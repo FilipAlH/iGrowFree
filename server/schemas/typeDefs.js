@@ -65,6 +65,7 @@ const typeDefs = gql`
         lifeStyle(lifeStyleType: String!): LifeStyle
         lifeStyles: [LifeStyle]
         quote(quoteId: ID!): Quote
+        quotes: [Quote]
     }
     type Mutation {
         addUser(username: String!, email: String!, userLifeStyle: String! password: String!): Auth 

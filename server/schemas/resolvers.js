@@ -45,6 +45,10 @@ const resolvers = {
 
     quote: async (parent, { quoteId }) => {
       return Quote.findOne({ _id: quoteId });
+    },
+    
+    quotes: async () => {
+      return Quote.find({});
     }
   },
   Mutation: {
