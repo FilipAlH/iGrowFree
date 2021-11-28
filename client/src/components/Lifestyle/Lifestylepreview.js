@@ -14,7 +14,11 @@ const Lifestylepreview = ({ lifeStyles = [] }) => {
     if (!lifeStyles.length) {
         return <h3>nothing to see here...</h3>
     } else if (Auth.loggedIn()){
-        return <Userlifestyle />
+        return (
+            <div>
+                <Userlifestyle />
+            </div>
+        )
     } else {
         return(
             <div className="w-screen">
