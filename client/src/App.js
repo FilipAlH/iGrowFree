@@ -13,6 +13,7 @@ import SingleThread from './pages/SingleThread';
 import BlogThreads from './pages/Blog'
 import SignupForm from './pages/SignupForm';
 import LoginForm from './pages/LoginForm';
+import Footer from './pages/Footer';
 
 // import Profile from './pages/User';
 import Header from './components/Header/Header';
@@ -71,7 +72,7 @@ function App() {
               <BlogThreads />
             </Route>
           </div>
-          {/* <Footer /> */}
+          <Footer /> 
         </div>
       </Router>
     </ApolloProvider>
