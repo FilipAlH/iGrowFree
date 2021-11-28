@@ -13,18 +13,10 @@ export default ({checkList}) => {
   
     console.log(checkedItems);      // Set(0) - handling with Set
     console.log([...checkedItems]); // []     - handling with Array
-    
+
     return (
       <ul style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '20px'}} key={'habit'}>
-        {/* <li>
-          <input
-            type="checkbox"
-            onChange={handleCheck}              // 1
-            checked={isCheckedAll}              // 2
-          />
-          <label>Check All</label>
-        </li> */}
-  
+            
         {checkList.map((v, i) => (
           <li key={i} style={{marginRight: '10px'}}>
             <input
