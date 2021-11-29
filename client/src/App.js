@@ -13,7 +13,10 @@ import SingleThread from './pages/SingleThread';
 import BlogThreads from './pages/Blog'
 import SignupForm from './pages/SignupForm';
 import LoginForm from './pages/LoginForm';
+import Habit from './pages/Habit';
+import UserThreadList from './components/UserThreadList';
 import Footer from './pages/Footer';
+
 
 // import Profile from './pages/User';
 import Header from './components/Header/Header';
@@ -47,7 +50,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex flex-col h-screen justify-between">
+        <div className="flex flex-col h-screen justify-between sticky" style={{
+          background: `url("https://picsum.photos/id/1018/1000")`, backgroundSize: 'cover', backgroundAttachment: 'fixed'
+        }}>
           <Header />
           <div className="">
             <Route exact path="/">
@@ -65,11 +70,17 @@ function App() {
             {/* <Route exact path="/profiles/:username">
               <Profile />
             </Route> */}
+            <Route exact path = "/habit">
+              <Habit />
+              </Route>
             <Route exact path="/threads/:threadId">
               <SingleThread />
             </Route>
             <Route exact path="/threads">
               <BlogThreads />
+            </Route>
+            <Route exact path="/user/threads">
+              <UserThreadList />
             </Route>
           </div>
           <Footer />

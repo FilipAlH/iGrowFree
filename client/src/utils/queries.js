@@ -5,8 +5,10 @@ export const QUERY_THREADS = gql`
 query getThreads {
   threads {
     _id
+    ThreadTitle
     ThreadText
     ThreadAuthor{
+      _id
       username
     }
     createdAt
@@ -18,8 +20,10 @@ export const QUERY_SINGLE_THREAD = gql`
 query getSingleThread($threadId: ID!) {
   thread(threadId: $threadId) {
     _id
+    ThreadTitle
     ThreadText
     ThreadAuthor{
+      _id
       username
     }
     createdAt
@@ -77,7 +81,8 @@ query getLifeStyle($LifeStyle: String!) {
       }
   }
 }
-`
+`;
+
 export const QUERY_LIFESTYLES = gql`
     query getLifeStyles {
         lifeStyles {
@@ -89,7 +94,7 @@ export const QUERY_LIFESTYLES = gql`
             }
         }
     }
-`
+`;
 
 export const QUERY_USER = gql`
 query user ($username: String!) {
@@ -102,7 +107,7 @@ query user ($username: String!) {
       }
   }
 }
-`
+`;
 
 export const QUERY_QUOTES= gql`
 query {
@@ -112,4 +117,13 @@ query {
     description
   }
 }
-`
+`;
+
+export const HabitList= gql`
+query quotesList{
+  quotes{
+    _id
+    author
+    description
+  }
+}`
