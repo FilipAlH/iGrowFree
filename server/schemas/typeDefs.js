@@ -86,6 +86,7 @@ const typeDefs = gql`
         addHabit(habitName: String!, frequency: Int!): Habit
         removeHabit(habitId: String!): Habit
         updateUser(username: String!, habit: String!, state: [[Int!]]): User
+        deleteHabitState(username: String!, habit: String!): User
     }
 `;
 

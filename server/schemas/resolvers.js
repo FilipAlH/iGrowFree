@@ -86,6 +86,27 @@ const resolvers = {
       return updatedUser
     },
 
+    deleteHabitState: async(parent, {username, habit}) => {
+      const updatedUser = await User.findOneAndUpdate(
+        { username: username },
+        { $pull: 
+          { 
+          "checkListHabits": 
+            { 
+              Name: habit,  
+            }
+      
+          }
+        },
+        { 
+          new: true,
+          multi: true,
+        }
+        )
+
+      return updatedUser
+    },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {

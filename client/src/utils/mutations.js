@@ -89,4 +89,12 @@ export const UPDATE_HABIT_STATE = gql`
     }
   }
 `
-
+export const DELETE_HABIT_STATE = gql`
+  mutation deleteHabitState($username: String!, $habit: String!) {
+    deleteHabitState(username:$username, habit:$habit) {
+      checkListHabits{
+        Name
+      }	
+    }
+  }
+`
