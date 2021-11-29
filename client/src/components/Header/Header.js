@@ -9,8 +9,8 @@ const Header = () => {
         Auth.logout();
     };
     return (
-        <nav className="bg-white shadow-lg">
-            <div className="max-w-6xl mx-auto px-4">
+        <nav className="h-20 bg-white shadow-lg">
+            <div className="mt-2 mx-auto px-4">
                 <div className="flex justify-between">
                     <div className="flex space-x-7">
                         <div className="flex items-center py-4 px-2">
@@ -19,10 +19,12 @@ const Header = () => {
                             </Link>
                             <p className="font-semibold text-gray-500 text-lg">......Shape your life better.</p>
                         </div>
-                        <Link className="py-4 px-2 text-blue-500 font-semibold hover:text-green-500 transition duration-300" to="/">Home</Link>
-                        <Link className="py-4 px-2 text-blue-500 font-semibold hover:text-green-500 transition duration-300" to="/threads">Blog</Link>
+                        <div className="md:flex items-center space-x-1">
+                            <Link className="py-4 px-2 text-blue-500 font-semibold hover:text-green-500 transition duration-300" to="/">Home</Link>
+                            <Link className="py-4 px-2 text-blue-500 font-semibold hover:text-green-500 transition duration-300" to="/threads">Blog</Link>
+                        </div>
                     </div>
-                    <div className="hidden md:flex items-center space-x-3">
+                    <div className="md:flex items-center space-x-3">
                         {Auth.loggedIn() ? (
                             <>
                                 <span className="font-semibold text-gray-500 text-lg">Hey there, {Auth.getProfile().data.username}!</span>
@@ -41,7 +43,6 @@ const Header = () => {
                             </>
                         )}
                     </div>
-
                 </div>
             </div>
         </nav>
