@@ -5,8 +5,9 @@ export const ADD_THREAD = gql`
   mutation addThread($threadText: String!, $threadTitle: String!) {
     addthread(threadText: $threadText, threadTitle: $threadTitle) {
       _id
-      threadText
-      threadAuthor
+      ThreadTitle
+      ThreadText
+      ThreadAuthor
       createdAt
       comments {
         _id
@@ -20,12 +21,10 @@ export const ADD_COMMENT = gql`
   mutation addComment($threadId: ID!, $commentText: String!) {
     addComment(threadId: $threadId, commentText: $commentText) {
       _id
-      threadText
-      threadAuthor
-      createdAt
       comments {
         _id
         commentText
+        commentAuthor
         createdAt
       }
     }
@@ -79,3 +78,15 @@ export const REMOVE_HABIT = gql`
       }
     }
 `;
+
+export const UPDATE_HABIT_STATE = gql`
+  mutation updateUser($username: String!, $habit: String!, $state:[[Int!]]) {
+    updateUser(username:$username, habit:$habit, state:$state) {
+      checkListHabits{
+        Name
+        State
+      }	
+    }
+  }
+`
+

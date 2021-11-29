@@ -12,11 +12,11 @@ const Footer = () => {
 
 
     return (
-        <footer className="h-20  bg-blue-500">
+        <footer className="h-20 bg-blue-500">
             {loading ?
                 <div>Loading...</div>
                 :
-                <div className="text-center mt-4 bg-blue-500">
+                <div className="text-center text-gray mt-4 bg-blue-500">
                     <Quote quotes={quotes} />
                 </div>}
         </footer>

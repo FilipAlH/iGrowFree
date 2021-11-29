@@ -5,8 +5,10 @@ export const QUERY_THREADS = gql`
 query getThreads {
   threads {
     _id
+    ThreadTitle
     ThreadText
     ThreadAuthor{
+      _id
       username
     }
     createdAt
@@ -18,8 +20,10 @@ export const QUERY_SINGLE_THREAD = gql`
 query getSingleThread($threadId: ID!) {
   thread(threadId: $threadId) {
     _id
+    ThreadTitle
     ThreadText
     ThreadAuthor{
+      _id
       username
     }
     createdAt
@@ -97,6 +101,10 @@ query user ($username: String!) {
   user (username:$username) {
       username
       userLifeStyle
+      checkListHabits {
+        Name
+        State
+      }
   }
 }
 `;
