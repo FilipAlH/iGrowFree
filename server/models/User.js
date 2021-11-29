@@ -26,18 +26,19 @@ const userSchema = new Schema(
         userThreads: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Thread',
-            },
+                ref: "Thread",
+            }
         ],
         userHabits: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Habit',
+                ref: "Habit",
             },
         ],
     },
     // set this to use virtual below
     {
+    
         toJSON: {
             virtuals: true,
         },

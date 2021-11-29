@@ -18,6 +18,7 @@ const ThreadList = ({
         threads.map((thread) => (
           <div key={thread._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
+              <b>{thread.ThreadTitle} </b> <br/>
               {showUsername ? (
                 <Link
                   className="text-light"
