@@ -17,9 +17,12 @@ const ThreadList = ({
       {showTitle && <h3>{title}</h3>}
       {threads &&
         threads.map((thread) => (
+
           <div key={thread._id} className="flex flex-col md:flex-row overflow-hidden bg-white rounded-lg shadow-xl  mt-4 w-100 mx-80 bg-opacity-60">
             <h4 className="card-header bg-primary text-light p-2 m-0"></h4>
+<b>{thread.ThreadTitle} </b> <br/>
             <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
+
               {showUsername ? (
                 <><Link
                   className="font-semibold text-lg leading-tight truncate"

@@ -16,7 +16,7 @@ const CommentForm = ({ threadId }) => {
     event.preventDefault();
 
     try {
-      const { data } = await addComment({
+      const data = await addComment({
         variables: {
           threadId,
           commentText,

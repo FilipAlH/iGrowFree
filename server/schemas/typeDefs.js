@@ -37,6 +37,11 @@ const typeDefs = gql`
         createdAt: String
     }
 
+    type checkListHabits{
+        Name: String!
+        State: [[Int!]]
+    }
+
     type User {
         _id: ID
         username: String
@@ -45,6 +50,7 @@ const typeDefs = gql`
         userLifeStyle: String
         userThreads: [Thread]
         userHabits: [Habit]
+        checkListHabits: [checkListHabits]
     }
     type Auth {
         token: ID!
@@ -76,6 +82,7 @@ const typeDefs = gql`
         removeComment(threadId: ID!, commentId: ID!): Thread
         addHabit(habitName: String!, frequency: Int!): Habit
         removeHabit(habitId: String!): Habit
+        updateUser(username: String!, habit: String!, state: [[Int!]]): User
     }
 `;
 
