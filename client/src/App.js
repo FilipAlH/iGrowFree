@@ -49,7 +49,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex flex-col h-screen justify-between">
+        <div className="flex flex-col h-screen justify-between sticky" style={{
+          background: `url("https://picsum.photos/id/1018/1000")`, backgroundSize: 'cover'
+        }}>
           <Header />
           <div className="">
             <Route exact path="/">
