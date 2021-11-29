@@ -10,12 +10,12 @@ const Home = () => {
     const lifeStyles = data?.lifeStyles || []
     console.log(lifeStyles)
 
-    return(
-        <div className="w-screen">
-            {loading ? (<h3>Loading...</h3>) : 
-            (
-                <Lifestylepreview lifeStyles = {lifeStyles}/>
-            )}
+    return (
+        <div className="">
+            {loading ? (<h3>Loading...</h3>) :
+                (
+                    <Lifestylepreview lifeStyles={lifeStyles} />
+                )}
         </div>
     )
 }
