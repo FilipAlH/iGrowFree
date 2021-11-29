@@ -35,6 +35,11 @@ const userSchema = new Schema(
                 ref: "Habit",
             },
         ],
+        checkListHabits: [
+            {
+                type: Schema.Types.Mixed,
+            },
+        ],
     },
     // set this to use virtual below
     {

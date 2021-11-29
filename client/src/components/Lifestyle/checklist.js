@@ -3,9 +3,6 @@ import { useQuery } from '@apollo/client'
 import { QUERY_LIFESTYLE } from '../../utils/queries'
 import Checklists from './checklists';
 
-
-
-
 export default ({user}) => {
     console.log(user.userLifeStyle)
     const userlifestyle = user.userLifeStyle
@@ -26,12 +23,12 @@ export default ({user}) => {
     const allChecklists = []
 
     for(let i = 0; i < allHabits.length; i++){
-        const checkList = []
+        const checkList = [allHabits[i].name]
         
         for(let j = 0; j < allHabits[i].frequency; j++){
             checkList.push({_id: j, label: `Day ${j +1}`})
         }
-
+        console.log(checkList)
         allChecklists.push(checkList)
     }
 
@@ -42,7 +39,8 @@ export default ({user}) => {
             {allChecklists && allChecklists.map((checklist) => (
                 <Checklists checkList = {checklist} />
             ))}
-        </div>
+        </div> 
     );
   };
+  
   

@@ -100,6 +100,10 @@ query user ($username: String!) {
   user (username:$username) {
       username
       userLifeStyle
+      checkListHabits {
+        Name
+        State
+      }
   }
 }
 `
