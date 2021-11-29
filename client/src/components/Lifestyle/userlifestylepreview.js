@@ -19,22 +19,22 @@ const Userlifestyle = () => {
     console.log(user)
 
     return (
-        <div className="min-h-screen py-6 flex flex-col justify-center sm:py-12" style={{
-            background: `url("https://picsum.photos/id/1018/1000")`, backgroundSize: 'cover'
+        <div className="h-auto py-6 flex flex-col justify-center sm:py-12" style={{
+            background: `url("https://picsum.photos/id/1018/1000")`, backgroundSize: 'cover', backgroundAttachment: 'fixed'
         }}>
             <div className="py-8 w-screen">
-                <h2>Your lifestyle:</h2>
+                <h2 className="mt-6 text-center text-3xl font-bold text-gray-800 mb-10">Your lifestyle:</h2>
                 <div className="lg:flex items-center justify-center w-screen">
-                    <div className="lg:w-8/12 lg:mr-7 lg:mb-0 mb-7 bg-white p-6 shadow rounded" key={user.username}>
+                    <div className="lg:w-8/12 lg:mr-7 lg:mb-0 mb-7 bg-white p-6 shadow rounded bg-opacity-80" key={user.username}>
                         <div className="flex items-center border-b border-gray-200 pb-6">
                             <div className="flex items-start justify-between w-full">
                                 <div className="pl-3 w-full">
-                                    <p className="text-xl font-medium leading-5 text-gray-800">{user.userLifeStyle}</p>
+                                    <p className="text-gray-600 text-xl font-bold text-base text-center">{user.userLifeStyle}</p>
                                 </div>
                             </div>
                         </div>
                         <div className="px-2">
-                            <p className="text-sm leading-5 py-4 text-gray-600" style={{ display: 'flex', flexDirection: 'row' }}>
+                            <p className="" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
                                 <ul style={{ marginLeft: '20px' }}>
                                     <Habits user={user} />
                                 </ul>
