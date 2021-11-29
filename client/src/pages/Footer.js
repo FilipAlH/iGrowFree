@@ -11,24 +11,24 @@ const Footer = () => {
     const quotes = data?.quotes || []
     // const [selectedQuote, setSelectedQuote] = useState({ _id: "", author: "", description: "" })
 
- 
-        if (loading) {
-            console.log("loading")
-        } else {
-            console.log(quotes, "Graphql get quotes route")
-         
-        }   
+
+    if (loading) {
+        console.log("loading")
+    } else {
+        console.log(quotes, "Graphql get quotes route")
+
+    }
 
 
     return (
-        <div className="col-12 col-md-8 mb-3">
+        <footer className="h-20  bg-blue-500">
             {loading ?
                 <div>Loading...</div>
                 :
-                <div>
-                    <Quote quotes={quotes}/>
+                <div className="text-center mt-4 bg-blue-500">
+                    <Quote quotes={quotes} />
                 </div>}
-        </div>
+        </footer>
     )
 }
 

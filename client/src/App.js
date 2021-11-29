@@ -47,12 +47,12 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div className="flex flex-col h-screen justify-between">
           <Header />
-          <div className="container">
+          <div className="">
             <Route exact path="/">
               <Home />
-            </Route> 
+            </Route>
             <Route exact path="/login">
               <LoginForm />
             </Route>
@@ -72,7 +72,7 @@ function App() {
               <BlogThreads />
             </Route>
           </div>
-          <Footer /> 
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>
