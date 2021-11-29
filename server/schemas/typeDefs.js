@@ -51,6 +51,7 @@ const typeDefs = gql`
         userThreads: [Thread]
         userHabits: [Habit]
         checkListHabits: [checkListHabits]
+
     }
     
     type Auth {
@@ -69,6 +70,7 @@ const typeDefs = gql`
         thread(threadId: ID!): Thread
         habits: [Habit]
         habit(habitId: ID!): Habit
+        habitLists: [Habit]
         lifeStyle(lifeStyleType: String!): LifeStyle
         lifeStyles: [LifeStyle]
         quote(quoteId: ID!): Quote

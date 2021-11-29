@@ -9,15 +9,6 @@ import { QUERY_QUOTES } from '../utils/queries';
 const Footer = () => {
     const { loading, data } = useQuery(QUERY_QUOTES);
     const quotes = data?.quotes || []
-    // const [selectedQuote, setSelectedQuote] = useState({ _id: "", author: "", description: "" })
-
-
-    if (loading) {
-        console.log("loading")
-    } else {
-        console.log(quotes, "Graphql get quotes route")
-
-    }
 
 
     return (

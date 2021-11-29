@@ -81,7 +81,8 @@ query getLifeStyle($LifeStyle: String!) {
       }
   }
 }
-`
+`;
+
 export const QUERY_LIFESTYLES = gql`
     query getLifeStyles {
         lifeStyles {
@@ -93,7 +94,7 @@ export const QUERY_LIFESTYLES = gql`
             }
         }
     }
-`
+`;
 
 export const QUERY_USER = gql`
 query user ($username: String!) {
@@ -106,7 +107,7 @@ query user ($username: String!) {
       }
   }
 }
-`
+`;
 
 export const QUERY_QUOTES= gql`
 query {
@@ -116,4 +117,13 @@ query {
     description
   }
 }
-`
+`;
+
+export const HabitList= gql`
+query quotesList{
+  quotes{
+    _id
+    author
+    description
+  }
+}`

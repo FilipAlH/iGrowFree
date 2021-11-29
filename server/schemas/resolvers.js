@@ -167,14 +167,14 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addHabit: async (parent, { habitName, frequency }) => {
-      // if (context.user) {
+    addHabit: async (parent, { habitName, frequency, context }) => {
+      if (context.user) {
       const habit = await Habit.create({
         habitName,
         frequency,
       });
       return habit;
-      // }
+      }
       // throw new AuthenticationError('You need to be logged in!');
     },
     removeHabit: async (parent, { habitId }, context) => {
