@@ -16,9 +16,7 @@ const BlogThreads = () => {
   // if (error) return `Error! ${error.message}`;
 
   return (
-    <div className="pt-6 pb-12" style={{
-      background: `url("https://picsum.photos/id/1018/1000")`, backgroundSize: 'cover'
-    }}>
+    <div className="pt-6 pb-12" >
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -27,7 +25,7 @@ const BlogThreads = () => {
         </div>
           <div>
             <div>
-              <h2 className="text-center text-lg">Thread feed...</h2></div><ThreadList
+              <h2 className="font-semibold text-lg text-center leading-tight underline truncate mt-4">Blog feed...</h2></div><ThreadList
               threads={threads}
               title />
           </div></>

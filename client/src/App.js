@@ -50,7 +50,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex flex-col h-screen justify-between sticky" style={{
-          background: `url("https://picsum.photos/id/1018/1000")`, backgroundSize: 'cover'
+          background: `url("https://picsum.photos/id/1018/1000")`, backgroundSize: 'cover', backgroundAttachment: 'fixed'
         }}>
           <Header />
           <div className="">

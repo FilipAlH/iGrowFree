@@ -75,7 +75,7 @@ const ThreadForm = () => {
   return (
     <div className="flex flex-wrap overflow-hidden bg-white rounded-lg shadow-xl bg-opacity-60 mt-4 w-100 mx-80">
       <div className="w-full overflow-hidden">
-        <h3 className="py-2 px-4 font-medium text-center text-gray-500 text-xl rounded hover:bg-blue-500 hover:text-white transition duration-300">Create your Post here!</h3>
+        <h3 className="py-2 px-4 font-medium text-center text-gray-500 text-xl rounded ">Create your Post here!</h3>
       </div>
 
       {Auth.loggedIn() ? (
@@ -114,7 +114,7 @@ const ThreadForm = () => {
             </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              <button className="flex justify-center w-40 py-2 px-4 mt-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-blue-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">
                 Add Thread
               </button>
             </div>
