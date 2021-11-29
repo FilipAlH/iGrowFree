@@ -13,6 +13,7 @@ import SingleThread from './pages/SingleThread';
 import BlogThreads from './pages/Blog'
 import SignupForm from './pages/SignupForm';
 import LoginForm from './pages/LoginForm';
+import Habit from './pages/Habit';
 import Footer from './pages/Footer';
 
 // import Profile from './pages/User';
@@ -65,6 +66,9 @@ function App() {
             {/* <Route exact path="/profiles/:username">
               <Profile />
             </Route> */}
+            <Route exact path = "/habit">
+              <Habit />
+              </Route>
             <Route exact path="/threads/:threadId">
               <SingleThread />
             </Route>

@@ -44,7 +44,6 @@ const typeDefs = gql`
         password: String
         userLifeStyle: String
         userThreads: [Thread]
-        userHabits: [Habit]
     }
     type Auth {
         token: ID!
@@ -62,6 +61,7 @@ const typeDefs = gql`
         thread(threadId: ID!): Thread
         habits: [Habit]
         habit(habitId: ID!): Habit
+        habitLists: [Habit]
         lifeStyle(lifeStyleType: String!): LifeStyle
         lifeStyles: [LifeStyle]
         quote(quoteId: ID!): Quote
