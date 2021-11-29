@@ -6,6 +6,7 @@ import Checklists from './checklists';
 export default ({user}) => {
     console.log(user.userLifeStyle)
     const userlifestyle = user.userLifeStyle
+    console.log(userlifestyle)
     const { loading, data } = useQuery(QUERY_LIFESTYLE, {
         variables: { LifeStyle: userlifestyle}
     })
