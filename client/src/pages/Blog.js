@@ -16,7 +16,9 @@ const BlogThreads = () => {
   // if (error) return `Error! ${error.message}`;
 
   return (
-    <div className="pt-6 pb-12" >
+    <div className="pt-6 pb-12" style={{
+      background: `url("https://picsum.photos/id/1018/1000")`, backgroundSize: 'cover', backgroundAttachment: 'fixed'
+    }}>
       {loading ? (
         <div>Loading...</div>
       ) : (

@@ -16,10 +16,11 @@ const HabitForm = () => {
     event.preventDefault();
 console.log({...formStateName,...formStateFrequency})
     try {
+
       const { data } = await addHabitList({
         variables: {habitName:formStateName.habitName,frequency:Number(formStateFrequency.frequency) }, 
       });
-        
+
     } catch (err) {
       console.error(err);
     }
@@ -75,12 +76,12 @@ console.log({...formStateName,...formStateFrequency})
             )}
           </form>
         </>
-       ) : (
-         <p>
-           You need to be logged in to create New Habits. Please{' '}
-           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-         </p>
-       )} 
+      ) : (
+        <p>
+          You need to be logged in to create New Habits. Please{' '}
+          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+        </p>
+      )}
     </div>
   );
 };

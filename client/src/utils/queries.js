@@ -109,7 +109,7 @@ query user ($username: String!) {
 }
 `;
 
-export const QUERY_QUOTES= gql`
+export const QUERY_QUOTES = gql`
 query {
   quotes{
     _id
@@ -119,7 +119,7 @@ query {
 }
 `;
 
-export const HabitList= gql`
+export const HabitList = gql`
 query quotesList{
   quotes{
     _id

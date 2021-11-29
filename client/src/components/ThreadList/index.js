@@ -22,7 +22,7 @@ const ThreadList = ({
 
 
             <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
-              <h4 className="font-semibold text-lg leading-tight underline truncate mb-2">{thread.ThreadTitle} </h4>
+              <h4 className="font-semibold text-xl leading-tight text-center truncate mb-2">{thread.ThreadTitle} </h4>
               {showUsername ? (
                 <><Link
                   className="font-semibold text-lg leading-tight underline truncate"

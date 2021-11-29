@@ -84,7 +84,6 @@ const SignupForm = () => {
                                         <option value="Mindful">Mindful</option>
                                         <option value="Knowledge Seeking">Knowledge Seeking</option>
                                         <option value="Social">Social</option>
-
                                     </select>
                                 </div>
                                 <div>
