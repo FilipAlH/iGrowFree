@@ -1,30 +1,48 @@
+import React from 'react'
+import { useQuery } from '@apollo/client'
+import { QUERY_LIFESTYLE } from '../../utils/queries'
+import Checklists from './checklists';
 
-import { React } from 'react';
+export default ({user}) => {
+    console.log(user.userLifeStyle)
+    const userlifestyle = user.userLifeStyle
+    const { loading, data } = useQuery(QUERY_LIFESTYLE, {
+        variables: { LifeStyle: userlifestyle}
+    })
+    console.log(data)
+    const lifestyle = data?.lifeStyle.LifeStyleHabits || []
+    console.log(lifestyle)
 
-// export default function HabitList({
-//     // console.log()
-//     //     return <h3>No Habits Yet</h3>;
-//     //   }  
-//     // }
-  
-//     // const [habits, setHabits] = useState([]);
-//     // const {loading,  data } = useQuery(QUERY_HABITS)
+    const allHabits = []
+
+    lifestyle.forEach(habit => {
+        allHabits.push({ name: habit.habitName, frequency: habit.frequency})
+    });
+    console.log(allHabits)
+
+    const allChecklists = []
+
+    for(let i = 0; i < allHabits.length; i++){
+        const checkList = [allHabits[i].name]
+        
+        for(let j = 0; j < allHabits[i].frequency; j++){
+            checkList.push({_id: j, label: `Day ${j +1}`})
+        }
+        console.log(checkList)
+        allChecklists.push(checkList)
+    }
+
+    console.log(allChecklists)
+    
+    return (
+
+        
 
 
-//     // const getData = function() {
-//     //     if (loading) {
-
-//     //     } else {
-//     //         const returnedData = data?.habits || [];
-//     //         setHabits(returnedData);
-//     //         console.log(returnedData[0].habitName);
-//     //     }
-//     // }
-
-//     return (
-//         <div>
-//             <h6 className="text-xl">{habits.habitName}</h6>
-//             <h6 className="text-xl">Freequency:  {habits.frequency}</h6>
-//         </div>)
-// }
-
+        <div>
+            {allChecklists && allChecklists.map((checklist) => (
+                <Checklists checkList = {checklist} />
+            ))}
+        </div> 
+    );
+  };

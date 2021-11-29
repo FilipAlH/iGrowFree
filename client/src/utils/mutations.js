@@ -89,4 +89,14 @@ export const UPDATE_HABIT_STATE = gql`
     }
   }
 `
+export const ADD_HABIT_LIST = gql`
+  mutation addHabitList($habitName: String!, $frequency: Int!) {
+    addHabitList(habitName: $habitName, frequency: $frequency) {
+    _id
+    habitName
+    frequency
+    createdAt
+    }
+  }
+`
 

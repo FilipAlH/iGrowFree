@@ -179,6 +179,15 @@ const resolvers = {
       }
       // throw new AuthenticationError('You need to be logged in!');
     },
+    addHabitList: async (parent, { habitName, frequency }) => {
+      console.log('test')
+      console.log(habitName,frequency)
+      const habit = await Habit.create({
+        habitName,
+        frequency,
+      });
+      return habit;
+    },
     removeHabit: async (parent, { habitId }, context) => {
       if (context.user) {
         const habit = await Habit.findOneAndDelete({
