@@ -27,10 +27,12 @@ const resolvers = {
       //   populate: 'userHabits'
       // });
     },
-    user: async (parent, { username }) => {
+   user: async (parent, { username }) => {
       const params = username ? { username } : {};
-      // console.log(params)
-      return await User.findOne(params).populate('userThreads').exec(function(err, user){console.log(user.populated('userThreads'))});
+      return User.findOne(params).populate('userThreads').populate({
+        path: 'me',
+        populate: 'userHabits'
+      });
     },
     habits: async (parent, { LifeStyle }) => {
       const params = LifeStyle ? { LifeStyle } : {};
