@@ -14,6 +14,7 @@ import BlogThreads from './pages/Blog'
 import SignupForm from './pages/SignupForm';
 import LoginForm from './pages/LoginForm';
 import Habit from './pages/Habit';
+// import HabitForm from './components/HabitForm/HabitForm';
 import UserThreadList from './components/UserThreadList';
 import Footer from './pages/Footer';
 
@@ -64,15 +65,15 @@ function App() {
             <Route exact path="/signup">
               <SignupForm />
             </Route>
-            {/* <Route exact path="/me">
-              <Profile />
+            {/* <Route exact path="/habitform">
+              <HabitForm />
             </Route> */}
             {/* <Route exact path="/profiles/:username">
               <Profile />
             </Route> */}
-            <Route exact path = "/habit">
+            <Route exact path="/habit">
               <Habit />
-              </Route>
+            </Route>
             <Route exact path="/threads/:threadId">
               <SingleThread />
             </Route>

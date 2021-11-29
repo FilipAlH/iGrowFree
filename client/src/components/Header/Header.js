@@ -17,11 +17,22 @@ const Header = () => {
                             <Link className="text-light" to="/">
                                 <h1 className="font-bold text-gray-800 text-2xl">iGrowFree    </h1>
                             </Link>
-                            <p className="font-semibold text-gray-500 text-lg">......Shape your life better.</p>
+                            <p className="font-semibold text-gray-500 text-lg mt-1">......Shape your life better.</p>
                         </div>
                         <div className="md:flex items-center space-x-1">
-                            <Link className="py-4 px-2 text-blue-500 text-2xl font-semibold hover:text-green-500 transition duration-300" to="/">Home</Link>
-                            <Link className="py-4 px-2 text-blue-500 text-2xl font-semibold hover:text-green-500 transition duration-300" to="/threads">Blog</Link>
+                            {Auth.loggedIn() ? (
+                                <>
+                                    <Link className="py-4 px-2 text-blue-500 text-2xl font-semibold hover:text-green-500 transition duration-300" to="/">Home</Link>
+                                    <Link className="py-4 px-2 text-blue-500 text-2xl font-semibold hover:text-green-500 transition duration-300" to="/threads">Blog</Link>
+                                    <Link className="py-4 px-2 text-blue-500 text-2xl font-semibold hover:text-green-500 transition duration-300" to="/habit">Habits</Link>
+                                </>
+                            ) : (
+                                <>
+                                    <Link className="py-4 px-2 text-blue-500 text-2xl font-semibold hover:text-green-500 transition duration-300" to="/">Home</Link>
+                                    <Link className="py-4 px-2 text-blue-500 text-2xl font-semibold hover:text-green-500 transition duration-300" to="/threads">Blog</Link>
+                                </>
+                            )}
+
                         </div>
                     </div>
                     <div className="md:flex items-center space-x-3">

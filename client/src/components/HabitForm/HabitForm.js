@@ -10,8 +10,8 @@ import Auth from '../../utils/auth';
 console.log('habitform');
 
 const HabitForm = () => {
-  const { formState, setformState } = useState({ habitName:'', frquency: 0 });
-  
+  const { formState, setformState } = useState({ habitName: '', frquency: 0 });
+
 
   const [addHabit, { error }] = useMutation(ADD_HABIT, {
 
@@ -41,17 +41,17 @@ const HabitForm = () => {
 
     try {
       const { data } = await addHabit({
-        variables: {...formState },
+        variables: { ...formState },
       });
-        
+
     } catch (err) {
       console.error(err);
     }
-    setformState({ habitName:'', frequency: 0, })
+    setformState({ habitName: '', frequency: 0, })
   };
   const handleChange = (event) => {
     const { value } = event.target;
-    setformState({ habitName:(value), frequency:(value), })
+    setformState({ habitName: (value), frequency: (value), })
   };
   return (
     <div>
@@ -90,12 +90,12 @@ const HabitForm = () => {
             )}
           </form>
         </>
-       ) : (
-         <p>
-           You need to be logged in to create New Habits. Please{' '}
-           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-         </p>
-       )} 
+      ) : (
+        <p>
+          You need to be logged in to create New Habits. Please{' '}
+          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+        </p>
+      )}
     </div>
   );
 };
