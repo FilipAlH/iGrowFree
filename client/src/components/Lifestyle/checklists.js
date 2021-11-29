@@ -2,8 +2,9 @@ import React from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 import { useChecklist } from 'react-checklist'
 import { QUERY_USER } from '../../utils/queries';
-import { UPDATE_HABIT_STATE } from '../../utils/mutations';
+import { UPDATE_HABIT_STATE, DELETE_HABIT_STATE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import ReactDOM from 'react-dom'
 
 export default ({checkList}) => {
     //function to compare two arrays
@@ -87,12 +88,37 @@ export default ({checkList}) => {
             console.log(setArray)
         }
     }
-    
     const handleReset = () => setCheckedItems(new Set());
   
     console.log(checkedItems);      // Set(0) - handling with Set
     console.log([...checkedItems]); // []     - handling with Array
 
+    const [updateHabit, { updateError }] = useMutation(UPDATE_HABIT_STATE);
+    const [deleteHabit, { deleteError }] = useMutation(DELETE_HABIT_STATE);
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+    
+        try {
+          const deleteData = await deleteHabit({
+            variables: {
+              username: Auth.getProfile().data.username,
+              habit: checkList[0],
+            },
+          });
+
+          const updateData = await updateHabit({
+            variables: {
+              username: Auth.getProfile().data.username,
+              habit: checkList[0],
+              state: [...checkedItems],
+            },
+          });
+
+        } catch (err) {
+          console.error(err);
+        }
+    };
     // const [updateState, { updateData, updateLoading, updateError }] = useMutation(UPDATE_HABIT_STATE)
     // if(updateLoading){console.log('loading update')}
     // if(updateError){console.log('error updating')}
@@ -106,8 +132,6 @@ export default ({checkList}) => {
     //     }})
     // }
     
-
-     
 
     return (
       <ul style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '20px'}} key={'habit'}>
@@ -129,8 +153,13 @@ export default ({checkList}) => {
                 </button>
             </li>
             <li style={{marginRight: '10px'}}>
-                <button onClick={handleLoad}>
+                <button className ="Load" onClick={handleLoad}>
                 Load
+                </button>
+            </li>
+            <li style={{marginRight: '10px'}}>
+                <button onClick={handleFormSubmit}>
+                Save Progress!
                 </button>
             </li>
       </ul>

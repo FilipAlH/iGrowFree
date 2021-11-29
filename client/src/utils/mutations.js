@@ -89,6 +89,17 @@ export const UPDATE_HABIT_STATE = gql`
     }
   }
 `
+
+export const DELETE_HABIT_STATE = gql`
+  mutation deleteHabitState($username: String!, $habit: String!) {
+    deleteHabitState(username:$username, habit:$habit) {
+      checkListHabits{
+        Name
+      }	
+    }
+  }
+`
+
 export const ADD_HABIT_LIST = gql`
   mutation addHabitList($habitName: String!, $frequency: Int!) {
     addHabitList(habitName: $habitName, frequency: $frequency) {
@@ -99,4 +110,5 @@ export const ADD_HABIT_LIST = gql`
     }
   }
 `
+
 
