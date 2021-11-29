@@ -2,57 +2,41 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_HABIT } from '../../utils/mutations';
-import { QUERY_HABITS } from '../../utils/queries';
+import { ADD_HABIT_LIST } from '../../utils/mutations';
+import { QUERY_HABITS, QUERY_USER } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-console.log('habitform');
-
 const HabitForm = () => {
-  const { formState, setformState } = useState({ habitName: '', frquency: 0 });
-
-
-  const [addHabit, { error }] = useMutation(ADD_HABIT, {
-
-    update(cache, { data: { addHabit } }) {
-      try {
-        const { habits } = cache.readQuery({ query: QUERY_HABITS });
-
-        cache.writeQuery({
-          query: QUERY_HABITS,
-          data: { habits: [addHabit, ...habits] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-
-      // // update me object's cache
-      // const { me } = cache.readQuery({ query: QUERY_ME });
-      // cache.writeQuery({
-      //   query: QUERY_ME,
-      //   data: { me: { ...me, thoughts: [...me.habits, addHabit] } },
-      // });
-    },
-  });
+  const [ formStateName, setformStateName ] = useState({ habitName:''});
+  const [ formStateFrequency, setformStateFrequency ] = useState({ frequency: 0 });
+  const [addHabitList, { error }] = useMutation(ADD_HABIT_LIST);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+console.log({...formStateName,...formStateFrequency})
     try {
-      const { data } = await addHabit({
-        variables: { ...formState },
+
+      const { data } = await addHabitList({
+        variables: {habitName:formStateName.habitName,frequency:Number(formStateFrequency.frequency) }, 
       });
 
     } catch (err) {
       console.error(err);
     }
-    setformState({ habitName: '', frequency: 0, })
+
+    setformStateName({ habitName:''})
+    setformStateFrequency({ frequency: 0 })
   };
-  const handleChange = (event) => {
+  const handleChangeName = (event) => {
     const { value } = event.target;
-    setformState({ habitName: (value), frequency: (value), })
+    setformStateName({ habitName:(value) })
   };
+  const handleChangeFrequency = (event) => {
+    const { value } = event.target;
+    setformStateFrequency({ frequency:(value), })
+  };
+
   return (
     <div>
       <h3>Add Habit</h3>
@@ -61,30 +45,32 @@ const HabitForm = () => {
         <>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
+            // onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
-              <textarea
+            <div className="w-full overflow-hidden bg-primary text-light p-2 m-0">
+              <textarea 
                 name="HabitName"
                 placeholder="Here's a new Habit..."
-                value={formState.habitName}
-                onChange={handleChange}
+                value={formStateName.habitName}
+                onChange={handleChangeName}
               ></textarea>
-              <textarea
+            </div>
+            <div className="w-full overflow-hidden bg-primary text-light p-2 m-0">
+              <textarea 
                 name="frequency"
-                placeholder="Time per week?"
-                value={formState.frequency}
-                onChange={handleChange}
+                placeholder="Times per week?"
+                value={formStateFrequency.frequency}
+                onChange={handleChangeFrequency}
               ></textarea>
             </div>
 
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+            <div className="w-full overflow-hidden">
+              <button className="flex justify-left w-40 py-2 px-4 mt-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-blue-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleFormSubmit} type="submit">
                 Add Habit
               </button>
             </div>
             {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
+              <div className="w-full overflow-hidden">
                 {error.message}
               </div>
             )}

@@ -1,17 +1,19 @@
 import { React } from 'react';
 import { useQuery } from '@apollo/client';
 
-//import HabitList from '../components/HabitList/HabitList';
-// import HabitForm from '../components/HabitForm';
-import Auth from '../utils/auth';
-// import { QUERY_USER } from '../utils/queries';
+import HabitForm from '../components/HabitForm/HabitForm';
+// import Auth from '../utils/auth';
 import { QUERY_HABITS } from '../utils/queries';
-// import Checklist from './checklist'
+
 
 const Habit = () => {
     const { loading, data } = useQuery(QUERY_HABITS);
     const habitData = data?.habits || []
-
+    if(!loading) {
+        console.log('Not loading Habit List')
+    }
+      
+    
     return (
         <div className="w-screen">
             <h3 className="mt-6 text-center text-3xl font-bold text-gray-600 mb-10">Habit List:</h3>
