@@ -6,7 +6,6 @@ import { UPDATE_HABIT_STATE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 export default ({checkList}) => {
-    init()
     //function to compare two arrays
     Array.prototype.equals = function (array) {
         if (!array)
@@ -56,46 +55,46 @@ export default ({checkList}) => {
       keyType: 'number',
     });
 
+    
+    
+    for(let i = 0; i < importedChecklist.length; i++){
+        if(importedChecklist[i].name === checkList[0]){
+            let userArray = user[0].State
+            const setArray = []
+            for(let i = 0; i < userArray.length; i++){
+                setArray.push(userArray[i][0])
+            };
+            console.log(setArray)
+            console.log([...checkedItems])
 
-    function init() {
-        for(let i = 0; i < importedChecklist.length; i++){
-            if(importedChecklist[i].name === checkList[0]){
-                let userArray = user[0].State
-                const setArray = []
-                for(let i = 0; i < userArray.length; i++){
-                    setArray.push(userArray[i][0])
-                };
-                console.log(setArray)
-                console.log([...checkedItems])
-
-                if(setArray.equals([...checkedItems])) {
-                    console.log('next')
-                } else {
-                    setCheckedItems(new Set(setArray)) 
-                }
-                
+            if(setArray.equals([...checkedItems])) {
+                console.log('next')
             } else {
-                console.log('does not exist')
+                setCheckedItems(new Set(setArray)) 
             }
+            
+        } else {
+            console.log('does not exist')
         }
     }
+    
     const handleReset = () => setCheckedItems(new Set());
   
     console.log(checkedItems);      // Set(0) - handling with Set
     console.log([...checkedItems]); // []     - handling with Array
 
-    const [updateState, { updateData, updateLoading, updateError }] = useMutation(UPDATE_HABIT_STATE)
-    if(updateLoading){console.log('loading update')}
-    if(updateError){console.log('error updating')}
+    // const [updateState, { updateData, updateLoading, updateError }] = useMutation(UPDATE_HABIT_STATE)
+    // if(updateLoading){console.log('loading update')}
+    // if(updateError){console.log('error updating')}
 
 
-    const handleUpdate = () => {
-        updateState({ variables: {
-            username: Auth.getProfile().data.username,
-            habit: checkList[0],
-            state: [...checkedItems]
-        }})
-    }
+    // const handleUpdate = () => {
+    //     updateState({ variables: {
+    //         username: Auth.getProfile().data.username,
+    //         habit: checkList[0],
+    //         state: [...checkedItems]
+    //     }})
+    // }
     
 
      
