@@ -59,6 +59,25 @@ const resolvers = {
       // return newUser;
     },
 
+    updateUser: async(parent, {username, habit, state}) => {
+      const updatedUser = await User.updateOne(
+        { username: username },
+        { $addToSet: 
+          { 
+          "checkListHabits": [ 
+            { 
+              Name: habit, 
+              State: state 
+            }
+          ]
+          }
+        },
+        { new: true, upsert: true, multi: true}
+        )
+
+      return updatedUser
+    },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {

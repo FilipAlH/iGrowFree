@@ -4,7 +4,7 @@ import { useChecklist } from 'react-checklist'
 
 export default ({checkList}) => {
     
-    const { handleCheck, isCheckedAll, checkedItems, setCheckedItems } = useChecklist(checkList, {
+    const { handleCheck, checkedItems, setCheckedItems } = useChecklist(checkList, {
       key: '_id',
       keyType: 'number',
     });
@@ -16,7 +16,7 @@ export default ({checkList}) => {
 
     return (
       <ul style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '20px'}} key={'habit'}>
-            
+
         {checkList.map((v, i) => (
           <li key={i} style={{marginRight: '10px'}}>
             <input
