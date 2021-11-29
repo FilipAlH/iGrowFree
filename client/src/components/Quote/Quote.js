@@ -1,8 +1,7 @@
 import React from "react";
 
 export default function Quote({ quotes }) {
-    var randomIndex = Math.floor(Math.random() * 11)
-    console.log(quotes[randomIndex])
+    let randomIndex = Math.floor(Math.random() * 11)
     // useEffect(() => {
     let selectedQuote = {
         _id: quotes[randomIndex]._id,

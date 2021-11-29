@@ -10,36 +10,36 @@ const Lifestylepreview = ({ lifeStyles = [] }) => {
     lifeStyles.forEach(lifestyle => {
         console.log(lifestyle.lifeStyleType, lifestyle.LifeStyleHabits)
     });
-    
+
     if (!lifeStyles.length) {
         return <h3>nothing to see here...</h3>
-    } else if (Auth.loggedIn()){
+    } else if (Auth.loggedIn()) {
         return (
             <div>
                 <Userlifestyle />
             </div>
         )
     } else {
-        return(
-            <div className="w-screen">
+        return (
+            <div className="w-screen h-auto">
                 <div className="py-8 w-screen">
-                <h2>What lifestyle would you want...?</h2>
+                    <h2 className="mt-6 text-center text-3xl font-bold text-gray-600 mb-10">What lifestyle would you want...?</h2>
                     <div className="lg:flex items-center justify-center w-screen">
-                        {lifeStyles && 
+                        {lifeStyles &&
                             lifeStyles.map((lifestyle) => (
-                                <div className="lg:w-3/12 lg:mr-7 lg:mb-0 mb-7 bg-white p-6 shadow rounded" key={lifestyle._id}>
-                                    <div className="flex items-center border-b border-gray-200 pb-6">
-                                        <div className="flex items-start justify-between w-full">
-                                            <div className="pl-3 w-full">
-                                                <p className="text-xl font-medium leading-5 text-gray-800">{lifestyle.lifeStyleType}</p>
+                                <div className="lg:w-3/12 lg:mr-7 lg:ml-7 lg:mb-0 mb-7 bg-white p-6 shadow-xl sm:rounded-xl sm:p-10 bg-opacity-60" key={lifestyle._id}>
+                                    <div className="rounded sm:rounded-xl overflow-hidden shadow-lg bg-opacity-80">
+                                        <div className="px-6 py-4">
+                                            <div className="">
+                                                <p className="text-gray-600 text-xl font-bold text-base text-center ">{lifestyle.lifeStyleType}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="px-2">
-                                        <p className="text-sm leading-5 py-4 text-gray-600">
-                                            <ul style={{marginLeft: '20px'}}>
+                                    <div className="px-6 pt-4 pb-2">
+                                        <p className="text-500 text-base">
+                                            <ul style={{ marginLeft: '10px' }}>
                                                 {lifestyle.LifeStyleHabits && lifestyle.LifeStyleHabits.map((habit) => (
-                                                    <li key={habit.habitName}>{habit.habitName}</li>
+                                                    <li key={habit.habitName}> - {habit.habitName}</li>
                                                 ))}
                                             </ul>
                                         </p>
@@ -48,9 +48,9 @@ const Lifestylepreview = ({ lifeStyles = [] }) => {
                             ))}
                     </div>
                 </div>
-            </div> 
-            )
+            </div>
+        )
     }
-} 
+}
 
 export default Lifestylepreview

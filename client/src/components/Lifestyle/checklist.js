@@ -35,6 +35,10 @@ export default ({user}) => {
     console.log(allChecklists)
     
     return (
+
+        
+
+
         <div>
             {allChecklists && allChecklists.map((checklist) => (
                 <Checklists checkList = {checklist} />
