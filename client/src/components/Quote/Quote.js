@@ -12,8 +12,8 @@ export default function Quote({ quotes }) {
 
 
     return (
-    <div>
-        <h6>{selectedQuote.description}</h6>
-        <h4>Author: {selectedQuote.author}</h4>
-    </div>)
+        <div>
+            <h6 className="text-xl">{selectedQuote.description}</h6>
+            <h4>Author: {selectedQuote.author}</h4>
+        </div>)
 }
