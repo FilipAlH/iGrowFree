@@ -84,6 +84,7 @@ const typeDefs = gql`
         removeThread(threadId: ID!): Thread
         removeComment(threadId: ID!, commentId: ID!): Thread
         addHabit(habitName: String!, frequency: Int!): Habit
+        addHabitList(habitName: String!, frequency: Int!): Habit
         removeHabit(habitId: String!): Habit
         updateUser(username: String!, habit: String!, state: [[Int!]]): User
     }
