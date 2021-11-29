@@ -31,15 +31,15 @@ export default ({checkList}) => {
     })
 
     const user = data.user.checkListHabits || []
-    console.log(user)
+    //console.log(user)
 
     const filteredCheckList = []
     
     for(let i = 1; i < checkList.length; i++) {
         filteredCheckList.push(checkList[i])
     }
-    console.log(checkList)
-    console.log(filteredCheckList)
+    //console.log(checkList)
+    //console.log(filteredCheckList)
 
     const importedChecklist = []
 
@@ -48,33 +48,43 @@ export default ({checkList}) => {
     });
 
     console.log(importedChecklist)
-    console.log(checkList[0])
+    //console.log(checkList[0])
     
     const { handleCheck, checkedItems, setCheckedItems } = useChecklist(filteredCheckList, {
       key: '_id',
       keyType: 'number',
     });
 
-    
-    
-    for(let i = 0; i < importedChecklist.length; i++){
-        if(importedChecklist[i].name === checkList[0]){
-            let userArray = user[0].State
-            const setArray = []
-            for(let i = 0; i < userArray.length; i++){
-                setArray.push(userArray[i][0])
-            };
-            console.log(setArray)
-            console.log([...checkedItems])
+    let setArray = []
 
-            if(setArray.equals([...checkedItems])) {
-                console.log('next')
+    const handleLoad = () => {
+        for(let i = 0; i < importedChecklist.length; i++){
+            if(importedChecklist[i].name === checkList[0]){
+                let userArray = user[i].State
+                setArray = []
+                for(let i = 0; i < userArray.length; i++){
+                    setArray.push(userArray[i][0])
+                };
+
+                console.log(importedChecklist[i].name)
+                console.log(checkList[0])
+                console.log(setArray)
+                console.log([...checkedItems])
+
+                if(setArray.equals([...checkedItems])) {
+                    setArray = []
+                    console.log('next')
+                } else {
+                    console.log(`set array to ${setArray}`)
+                    setCheckedItems(new Set(setArray))
+                }
+                
             } else {
-                setCheckedItems(new Set(setArray)) 
+                console.log('does not exist')
             }
-            
-        } else {
-            console.log('does not exist')
+
+            setArray = []
+            console.log(setArray)
         }
     }
     
@@ -116,6 +126,11 @@ export default ({checkList}) => {
             <li style={{marginRight: '10px'}}>
                 <button onClick={handleReset}>
                 Reset
+                </button>
+            </li>
+            <li style={{marginRight: '10px'}}>
+                <button onClick={handleLoad}>
+                Load
                 </button>
             </li>
       </ul>
