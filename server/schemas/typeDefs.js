@@ -52,6 +52,7 @@ const typeDefs = gql`
         userHabits: [Habit]
         checkListHabits: [checkListHabits]
     }
+    
     type Auth {
         token: ID!
         user: User

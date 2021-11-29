@@ -62,7 +62,7 @@ const resolvers = {
     updateUser: async(parent, {username, habit, state}) => {
       const updatedUser = await User.updateOne(
         { username: username },
-        { $addToSet: 
+        { $set: 
           { 
           "checkListHabits": [ 
             { 
@@ -72,7 +72,7 @@ const resolvers = {
           ]
           }
         },
-        { new: true, upsert: true, multi: true}
+        { new: true }
         )
 
       return updatedUser
