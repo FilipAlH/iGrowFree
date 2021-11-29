@@ -14,6 +14,8 @@ import BlogThreads from './pages/Blog'
 import SignupForm from './pages/SignupForm';
 import LoginForm from './pages/LoginForm';
 import UserThreadList from './components/UserThreadList';
+import Footer from './pages/Footer';
+
 
 // import Profile from './pages/User';
 import Header from './components/Header/Header';
@@ -47,12 +49,12 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div className="flex flex-col h-screen justify-between">
           <Header />
-          <div className="container">
+          <div className="">
             <Route exact path="/">
               <Home />
-            </Route> 
+            </Route>
             <Route exact path="/login">
               <LoginForm />
             </Route>
@@ -75,7 +77,7 @@ function App() {
               <UserThreadList />
             </Route>
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>

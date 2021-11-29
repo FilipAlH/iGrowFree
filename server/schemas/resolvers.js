@@ -51,6 +51,10 @@ const resolvers = {
 
     quote: async (parent, { quoteId }) => {
       return Quote.findOne({ _id: quoteId });
+    },
+    
+    quotes: async () => {
+      return Quote.find({});
     }
   },
   Mutation: {
@@ -59,6 +63,25 @@ const resolvers = {
       const token = signToken(newUser);
       return { token, newUser };
       // return newUser;
+    },
+
+    updateUser: async(parent, {username, habit, state}) => {
+      const updatedUser = await User.updateOne(
+        { username: username },
+        { $addToSet: 
+          { 
+          "checkListHabits": [ 
+            { 
+              Name: habit, 
+              State: state 
+            }
+          ]
+          }
+        },
+        { new: true, upsert: true, multi: true}
+        )
+
+      return updatedUser
     },
 
     login: async (parent, { email, password }) => {

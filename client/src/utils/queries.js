@@ -103,3 +103,13 @@ query user ($username: String!) {
   }
 }
 `
+
+export const QUERY_QUOTES= gql`
+query {
+  quotes{
+    _id
+    author
+    description
+  }
+}
+`
