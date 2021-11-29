@@ -13,6 +13,7 @@ import SingleThread from './pages/SingleThread';
 import BlogThreads from './pages/Blog'
 import SignupForm from './pages/SignupForm';
 import LoginForm from './pages/LoginForm';
+import UserThreadList from './components/UserThreadList';
 
 // import Profile from './pages/User';
 import Header from './components/Header/Header';
@@ -69,6 +70,9 @@ function App() {
             </Route>
             <Route exact path="/threads">
               <BlogThreads />
+            </Route>
+            <Route exact path="/user/threads">
+              <UserThreadList />
             </Route>
           </div>
           {/* <Footer /> */}

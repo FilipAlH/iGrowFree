@@ -20,7 +20,7 @@ const SingleThread = () => {
     if (loading) {
       return <div>Loading...</div>;
     } else{
-      console.log(thread.ThreadAuthor.username)
+      console.log(thread._id)
     }
 
     return (

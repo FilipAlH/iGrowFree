@@ -4,6 +4,13 @@ const { Quote, Thread, User, Habit, LifeStyle } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
+
+  User: {
+    userThreads: async (user) => {
+      return (await user.populate('userThreads').execPopulate()).userThreads;
+    },
+  },
+
   Query: {
     threads: async () => {
       return await Thread.find({}).populate('ThreadAuthor', 'username').sort({ createdAt: -1 });
@@ -14,17 +21,16 @@ const resolvers = {
     },
     
     me: async () => {
-      return await User.find({}).populate('userThreads').populate({
-        path: 'me',
-        populate: 'userHabits'
-      });
+      return await User.find({}).populate('userThreads')
+      // .populate({
+      //   path: 'me',
+      //   populate: 'userHabits'
+      // });
     },
     user: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return User.findOne(params).populate('userThreads').populate({
-        path: 'me',
-        populate: 'userHabits'
-      });
+      // console.log(params)
+      return await User.findOne(params).populate('userThreads').exec(function(err, user){console.log(user.populated('userThreads'))});
     },
     habits: async (parent, { LifeStyle }) => {
       const params = LifeStyle ? { LifeStyle } : {};
@@ -80,9 +86,9 @@ const resolvers = {
           threadAuthor: context.user.username,
         });
 
-        await User.findOneAndUpdate(
+        await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { threads: thread._id } }
+          { $push: { userThreads: thread._id } }
         );
 
         return thread;
