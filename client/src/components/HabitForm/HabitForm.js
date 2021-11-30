@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_HABIT_LIST } from '../../utils/mutations';
+import { ADD_USER_HABIT } from '../../utils/mutations';
 import { QUERY_HABITS, QUERY_USER } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
@@ -10,7 +10,7 @@ import Auth from '../../utils/auth';
 const HabitForm = () => {
   const [ formStateName, setformStateName ] = useState({ habitName:''});
   const [ formStateFrequency, setformStateFrequency ] = useState({ frequency: 0 });
-  const [addHabitList, { error }] = useMutation(ADD_HABIT_LIST);
+  const [addHabitList, { error }] = useMutation(ADD_USER_HABIT);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -18,7 +18,7 @@ console.log({...formStateName,...formStateFrequency})
     try {
 
       const { data } = await addHabitList({
-        variables: {habitName:formStateName.habitName,frequency:Number(formStateFrequency.frequency) }, 
+        variables: {username: Auth.getProfile().data.username, habit:formStateName.habitName,frequency:Number(formStateFrequency.frequency) }, 
       });
 
     } catch (err) {

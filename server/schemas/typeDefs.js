@@ -41,7 +41,16 @@ const typeDefs = gql`
         Name: String!
         State: [[Int!]]
     }
+    type userCheckListHabits{
+        Name: String!
+        State: [[Int!]]
 
+    }
+    type userDefinedHabits{
+        habitName: String
+        frequency: Int
+
+    }
     type User {
         _id: ID
         username: String
@@ -51,6 +60,8 @@ const typeDefs = gql`
         userThreads: [Thread]
         userHabits: [Habit]
         checkListHabits: [checkListHabits]
+        userCheckListHabits: [userCheckListHabits]
+        userDefinedHabits: [userDefinedHabits]
 
     }
     
@@ -88,6 +99,9 @@ const typeDefs = gql`
         removeHabit(habitId: String!): Habit
         updateUser(username: String!, habit: String!, state: [[Int!]]): User
         deleteHabitState(username: String!, habit: String!): User
+        updateUserHabit(username: String!, habit: String!, frequency: Int!): User
+        updateUserCheckListHabits(username: String!, habit: String!, state: [[Int!]]): User
+        deleteUserHabitState(username: String!, habit: String!): User
     }
 `;
 

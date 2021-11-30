@@ -66,7 +66,44 @@ const resolvers = {
       return { token, newUser };
       // return newUser;
     },
+    updateUserCheckListHabits: async(parent, {username, habit, state}) => {
+      const updatedUser = await User.updateOne(
+        { username: username },
+        { $addToSet: 
+          { 
+          "userCheckListHabits": [ 
+            { 
+              Name: habit, 
+              State: state 
+            }
+          ]
+          }
+        },
+        { new: true }
+        )
 
+      return updatedUser
+    },
+    deleteUserHabitState: async(parent, {username, habit}) => {
+      const updatedUser = await User.findOneAndUpdate(
+        { username: username },
+        { $pull: 
+          { 
+          "userCheckListHabits": 
+            { 
+              Name: habit,  
+            }
+      
+          }
+        },
+        { 
+          new: true,
+          multi: true,
+        }
+        )
+
+      return updatedUser
+    },
     updateUser: async(parent, {username, habit, state}) => {
       const updatedUser = await User.updateOne(
         { username: username },
@@ -85,6 +122,24 @@ const resolvers = {
 
       return updatedUser
     },
+    updateUserHabit: async(parent, {username, habit, frequency}) => {
+      const updatedUser = await User.findOneAndUpdate(
+        { username: username },
+        { $addToSet: 
+          { 
+          "userDefinedHabits": [ 
+            { 
+              habitName: habit,
+              frequency: frequency, 
+            },
+          ]
+          }
+        },
+        { new: true }
+        )
+
+      return updatedUser   
+     },
 
     deleteHabitState: async(parent, {username, habit}) => {
       const updatedUser = await User.findOneAndUpdate(

@@ -1,21 +1,16 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 import { QUERY_LIFESTYLE } from '../../utils/queries'
-import Checklists from './checklists';
+import HabitLists from './HabitLists'
 
-export default ({user}) => {
-    console.log(user.userLifeStyle)
-    const userlifestyle = user.userLifeStyle
-    const { loading, data } = useQuery(QUERY_LIFESTYLE, {
-        variables: { LifeStyle: userlifestyle}
-    })
-    console.log(data)
-    const lifestyle = data?.lifeStyle.LifeStyleHabits || []
-    console.log(lifestyle)
+export default ({habit}) => {
+
+
+    console.log(habit)
 
     const allHabits = []
 
-    lifestyle.forEach(habit => {
+    habit.forEach(habit => {
         allHabits.push({ name: habit.habitName, frequency: habit.frequency})
     });
     console.log(allHabits)
@@ -36,12 +31,13 @@ export default ({user}) => {
     
     return (
 
+
         
 
 
         <div>
             {allChecklists && allChecklists.map((checklist) => (
-                <Checklists checkList = {checklist} />
+                <HabitLists checkList = {checklist} />
             ))}
         </div> 
     );
