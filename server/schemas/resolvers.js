@@ -17,10 +17,12 @@ const resolvers = {
     me: async () => {
       return await User.find({});
     },
-    user: async (parent, { username }) => {
+   user: async (parent, { username }) => {
       const params = username ? { username } : {};
+
       // console.log(params)
       return await User.findOne(params);
+
     },
     habits: async (parent, { LifeStyle }) => {
       const params = LifeStyle ? { LifeStyle } : {};
@@ -41,6 +43,10 @@ const resolvers = {
 
     quote: async (parent, { quoteId }) => {
       return Quote.findOne({ _id: quoteId });
+    },
+    
+    quotes: async () => {
+      return Quote.find({});
     }
   },
   Mutation: {
@@ -49,6 +55,101 @@ const resolvers = {
       const token = signToken(newUser);
       return { token, newUser };
       // return newUser;
+    },
+    updateUserCheckListHabits: async(parent, {username, habit, state}) => {
+      const updatedUser = await User.updateOne(
+        { username: username },
+        { $addToSet: 
+          { 
+          "userCheckListHabits": [ 
+            { 
+              Name: habit, 
+              State: state 
+            }
+          ]
+          }
+        },
+        { new: true }
+        )
+
+      return updatedUser
+    },
+    deleteUserHabitState: async(parent, {username, habit}) => {
+      const updatedUser = await User.findOneAndUpdate(
+        { username: username },
+        { $pull: 
+          { 
+          "userCheckListHabits": 
+            { 
+              Name: habit,  
+            }
+      
+          }
+        },
+        { 
+          new: true,
+          multi: true,
+        }
+        )
+
+      return updatedUser
+    },
+    updateUser: async(parent, {username, habit, state}) => {
+      const updatedUser = await User.updateOne(
+        { username: username },
+        { $addToSet: 
+          { 
+          "checkListHabits": [ 
+            { 
+              Name: habit, 
+              State: state 
+            }
+          ]
+          }
+        },
+        { new: true }
+        )
+
+      return updatedUser
+    },
+    updateUserHabit: async(parent, {username, habit, frequency}) => {
+      const updatedUser = await User.findOneAndUpdate(
+        { username: username },
+        { $addToSet: 
+          { 
+          "userDefinedHabits": [ 
+            { 
+              habitName: habit,
+              frequency: frequency, 
+            },
+          ]
+          }
+        },
+        { new: true }
+        )
+
+      return updatedUser   
+     },
+
+    deleteHabitState: async(parent, {username, habit}) => {
+      const updatedUser = await User.findOneAndUpdate(
+        { username: username },
+        { $pull: 
+          { 
+          "checkListHabits": 
+            { 
+              Name: habit,  
+            }
+      
+          }
+        },
+        { 
+          new: true,
+          multi: true,
+        }
+        )
+
+      return updatedUser
     },
 
     login: async (parent, { email, password }) => {
@@ -132,15 +233,24 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addHabit: async (parent, { habitName, frequency }) => {
-      // if (context.user) {
+    addHabit: async (parent, { habitName, frequency, context }) => {
+      if (context.user) {
       const habit = await Habit.create({
         habitName,
         frequency,
       });
       return habit;
-      // }
+      }
       // throw new AuthenticationError('You need to be logged in!');
+    },
+    addHabitList: async (parent, { habitName, frequency }) => {
+      console.log('test')
+      console.log(habitName,frequency)
+      const habit = await Habit.create({
+        habitName,
+        frequency,
+      });
+      return habit;
     },
     removeHabit: async (parent, { habitId }, context) => {
       if (context.user) {

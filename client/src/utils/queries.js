@@ -83,7 +83,8 @@ query getLifeStyle($LifeStyle: String!) {
       }
   }
 }
-`
+`;
+
 export const QUERY_LIFESTYLES = gql`
     query getLifeStyles {
         lifeStyles {
@@ -95,13 +96,44 @@ export const QUERY_LIFESTYLES = gql`
             }
         }
     }
-`
+`;
 
 export const QUERY_USER = gql`
 query user ($username: String!) {
   user (username:$username) {
       username
       userLifeStyle
+      checkListHabits {
+        Name
+        State
+      }
+      userDefinedHabits {
+        habitName
+        frequency
+      }
+      userCheckListHabits {
+        Name
+        State        
+      }
   }
 }
-`
+`;
+
+export const QUERY_QUOTES = gql`
+query {
+  quotes{
+    _id
+    author
+    description
+  }
+}
+`;
+
+export const HabitList = gql`
+query quotesList{
+  quotes{
+    _id
+    author
+    description
+  }
+}`

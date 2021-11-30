@@ -80,3 +80,66 @@ export const REMOVE_HABIT = gql`
       }
     }
 `;
+
+export const UPDATE_HABIT_STATE = gql`
+  mutation updateUser($username: String!, $habit: String!, $state:[[Int!]]) {
+    updateUser(username:$username, habit:$habit, state:$state) {
+      checkListHabits{
+        Name
+        State
+      }	
+    }
+  }
+`
+
+export const DELETE_HABIT_STATE = gql`
+  mutation deleteHabitState($username: String!, $habit: String!) {
+    deleteHabitState(username:$username, habit:$habit) {
+      checkListHabits{
+        Name
+      }	
+    }
+  }
+`
+
+export const ADD_HABIT_LIST = gql`
+  mutation addHabitList($habitName: String!, $frequency: Int!) {
+    addHabitList(habitName: $habitName, frequency: $frequency) {
+    _id
+    habitName
+    frequency
+    createdAt
+    }
+  }
+`
+export const ADD_USER_HABIT = gql`
+  mutation updateUserHabit($username: String!, $habit: String!, $frequency: Int!){
+    updateUserHabit (username: $username, habit: $habit, frequency: $frequency) {
+        userDefinedHabits{
+          habitName
+          frequency
+        }
+      }
+  } 
+
+
+`
+export const DELETE_USER_HABIT_STATE = gql`
+  mutation deleteUserHabitState($username: String!, $habit: String!) {
+    deleteUserHabitState(username:$username, habit:$habit) {
+      userCheckListHabits{
+        Name
+      }	
+    }
+  }
+`
+export const UPDATE_USER_HABIT_STATE = gql`
+  mutation updateUserCheckListHabits($username: String!, $habit: String!, $state:[[Int!]]) {
+    updateUserCheckListHabits(username:$username, habit:$habit, state:$state) {
+      userCheckListHabits{
+        Name
+        State
+      }	
+    }
+  }
+`

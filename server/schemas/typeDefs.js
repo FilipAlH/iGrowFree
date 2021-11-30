@@ -37,6 +37,20 @@ const typeDefs = gql`
         createdAt: String
     }
 
+    type checkListHabits{
+        Name: String!
+        State: [[Int!]]
+    }
+    type userCheckListHabits{
+        Name: String!
+        State: [[Int!]]
+
+    }
+    type userDefinedHabits{
+        habitName: String
+        frequency: Int
+
+    }
     type User {
         _id: ID
         username: String
@@ -45,7 +59,12 @@ const typeDefs = gql`
         userLifeStyle: String
         userThreads: [Thread]
         userHabits: [Habit]
+        checkListHabits: [checkListHabits]
+        userCheckListHabits: [userCheckListHabits]
+        userDefinedHabits: [userDefinedHabits]
+
     }
+    
     type Auth {
         token: ID!
         user: User
@@ -62,9 +81,11 @@ const typeDefs = gql`
         thread(threadId: ID!): Thread
         habits: [Habit]
         habit(habitId: ID!): Habit
+        habitLists: [Habit]
         lifeStyle(lifeStyleType: String!): LifeStyle
         lifeStyles: [LifeStyle]
         quote(quoteId: ID!): Quote
+        quotes: [Quote]
     }
     type Mutation {
         addUser(username: String!, email: String!, userLifeStyle: String! password: String!): Auth 
@@ -74,7 +95,13 @@ const typeDefs = gql`
         removeThread(threadId: ID!): Thread
         removeComment(threadId: ID!, commentId: ID!): Thread
         addHabit(habitName: String!, frequency: Int!): Habit
+        addHabitList(habitName: String!, frequency: Int!): Habit
         removeHabit(habitId: String!): Habit
+        updateUser(username: String!, habit: String!, state: [[Int!]]): User
+        deleteHabitState(username: String!, habit: String!): User
+        updateUserHabit(username: String!, habit: String!, frequency: Int!): User
+        updateUserCheckListHabits(username: String!, habit: String!, state: [[Int!]]): User
+        deleteUserHabitState(username: String!, habit: String!): User
     }
 `;
 

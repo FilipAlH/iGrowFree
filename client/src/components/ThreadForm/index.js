@@ -44,7 +44,8 @@ const ThreadForm = () => {
     event.preventDefault();
 
     try {
-      const {data} = await addThread({
+      // getProfile() is unknown so data wont get read
+      const { data } = await addThread({
         variables: {
           ThreadText: ThreadText,
           ThreadTitle: ThreadTitle,
@@ -76,33 +77,41 @@ const ThreadForm = () => {
   };
 
   return (
-    <div>
-      <h3>Create a Thread of Your Own!</h3>
+    <div className="flex flex-wrap overflow-hidden bg-white rounded-lg shadow-xl bg-opacity-60 mt-4 w-100 mx-80">
+      <div className="w-full overflow-hidden">
+        <h3 className="py-2 px-4 font-medium text-center text-gray-500 text-xl rounded ">Create your Post here!</h3>
+      </div>
 
       {Auth.loggedIn() ? (
-        <>
-          
+        <><div className="w-full overflow-hidden">
+          <p
+            className={`card-header bg-primary text-light p-2 ml-4  ${characterCount === 1000 || error ? 'text-danger' : ''
+              }`}
+
+          >
+            Character Count: {characterCount}/1000
+          </p>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+            className="w-full overflow-hidden bg-primary text-center text-light p-2 m-0"
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
+            <div className="w-full overflow-hidden bg-primary text-center text-light  p-2 m-0">
               <textarea
                 name="ThreadTitle"
-                placeholder="Create thread title here..."
+                placeholder="Enter your post title"
                 value={ThreadTitle}
-                className="form-input w-100"
+                className="w-full overflow-hidden bg-primary text-light  p-2 m-0"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChangeTitle}
               ></textarea>
             </div>
 
-            <div className="col-12 col-lg-9">
+            <div className="w-full overflow-hidden bg-primary text-center text-light  p-2 m-0">
               <textarea
                 name="ThreadText"
-                placeholder="Create thread here..."
+                placeholder="Enter your post"
                 value={ThreadText}
-                className="form-input w-100"
+                className="w-full overflow-hidden bg-primary text-light  p-2 m-0"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
@@ -116,7 +125,7 @@ const ThreadForm = () => {
           </p>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              <button className="flex justify-center w-40 py-2 px-4 mt-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-blue-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">
                 Add Thread
               </button>
             </div>
@@ -126,13 +135,18 @@ const ThreadForm = () => {
               </div>
             )}
           </form>
+        </div>
         </>
       ) : (
-        <p>
-          You need to be logged in to make a thread. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
+        <div className="w-full overflow-hidden">
+          <h3 className="card-header bg-primary text-center text-light p-2 m-0">
+            You need to be logged in to make a thread. Please <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+          </h3>
+        </div>
+
       )}
+
+
     </div>
   );
 };
