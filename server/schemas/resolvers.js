@@ -5,12 +5,6 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
 
-  User: {
-    userThreads: async (user) => {
-      return (await user.populate('userThreads').execPopulate()).userThreads;
-    },
-  },
-
   Query: {
     threads: async () => {
       return await Thread.find({}).populate('ThreadAuthor', 'username').sort({ createdAt: -1 });
@@ -21,16 +15,12 @@ const resolvers = {
     },
     
     me: async () => {
-      return await User.find({}).populate('userThreads')
-      // .populate({
-      //   path: 'me',
-      //   populate: 'userHabits'
-      // });
+      return await User.find({});
     },
     user: async (parent, { username }) => {
       const params = username ? { username } : {};
       // console.log(params)
-      return await User.findOne(params).populate('userThreads').exec(function(err, user){console.log(user.populated('userThreads'))});
+      return await User.findOne(params);
     },
     habits: async (parent, { LifeStyle }) => {
       const params = LifeStyle ? { LifeStyle } : {};
@@ -77,23 +67,21 @@ const resolvers = {
 
       return { token, user };
     },
-    addThread: async (parent, { threadText, threadTitle }, context) => {
+    addThread: async (parent, { ThreadText, ThreadTitle}, context) => {
 
-      if (context.user) {
         const thread = await Thread.create({
-          threadText,
-          threadTitle,
-          threadAuthor: context.user.username,
+          ThreadText,
+          ThreadTitle,
+          ThreadAuthor:context.user._id
         });
 
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { userThreads: thread._id } }
+  const user=  await User.findByIdAndUpdate(
+          { _id: context.user._id},
+          { $push: { userThreads: thread._id } },
+          {new:true}
         );
-
-        return thread;
-      }
-      throw new AuthenticationError('You need to be logged in!');
+     
+        return thread
     },
     addComment: async (parent, { threadId, commentText }, context) => {
       if (context.user) {

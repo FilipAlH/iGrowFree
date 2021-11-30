@@ -22,7 +22,7 @@ const ThreadList = ({
               {showUsername ? (
                 <Link
                   className="text-light"
-                  to={`/profiles/${thread.ThreadAuthor.username}`}
+                  to={`/users/${thread.ThreadAuthor.username}`}
                 >
                   {thread.ThreadAuthor.username} <br />
                   <span style={{ fontSize: '1rem' }}>

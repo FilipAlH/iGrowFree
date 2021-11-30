@@ -7,6 +7,7 @@ import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_THREAD } from '../utils/queries';
+import ThreadForm from "../components/ThreadForm";
 
 const SingleThread = () => {
     const {threadId} = useParams();
@@ -26,6 +27,7 @@ const SingleThread = () => {
     return (
         <div className="my-3">
         <h3 className="card-header bg-dark text-light p-2 m-0">
+          <b>{thread.ThreadTitle} </b> <br/>
           {thread.ThreadAuthor.username} <br />
           <span style={{ fontSize: '1rem' }}>
             created this thread on {thread.createdAt}
@@ -50,6 +52,9 @@ const SingleThread = () => {
         </div>
         <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
           <CommentForm threadId={thread._id} />
+        </div>
+        <div>
+          <ThreadForm />
         </div>
       </div>
     )

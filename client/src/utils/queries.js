@@ -42,7 +42,9 @@ export const QUERY_ME = gql`
     me {
       username
       userLifeStyle
-
+      userThreads{
+        _id
+      }
     }
   }
 `;

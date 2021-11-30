@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
 
 import { ADD_THREAD } from '../../utils/mutations';
 import { QUERY_ME, QUERY_THREADS } from '../../utils/queries';
@@ -13,40 +15,41 @@ const ThreadForm = () => {
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addThread, { error }] = useMutation(ADD_THREAD, {
-    update(cache, { data: { addThread } }) {
-      try {
-        const { threads } = cache.readQuery({ query: QUERY_THREADS });
+  // const [ThreadAuthor, setThreadAuthor] = useState(Auth.getProfile().data._id)
 
-        cache.writeQuery({
-          query: QUERY_THREADS,
-          data: { threads: [addThread, ...threads] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
+  const [addThread, { error }] = useMutation(ADD_THREAD);
+  //   , {
+  //   update(cache, { data: { addThread } }) {
+  //     try {
+  //       const { threads } = cache.readQuery({ query: QUERY_THREADS });
 
-      // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, threads: [...me.threads, addThread] } },
-      });
-    },
-  });
+  //       cache.writeQuery({
+  //         query: QUERY_THREADS,
+  //         data: { threads: [addThread, ...threads] },
+  //       });
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+
+  //     // update me object's cache
+  //     const { me } = cache.readQuery({ query: QUERY_ME });
+  //     cache.writeQuery({
+  //       query: QUERY_ME,
+  //       data: { me: { ...me, threads: [...me.userThreads, addThread] } },
+  //     });
+  //   },
+  // }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-        // getProfile() is unknown so data wont get read
-      const { data } = await addThread({
+      const {data} = await addThread({
         variables: {
-          ThreadText,
-          ThreadTitle,
-          ThreadAuthor: Auth.getProfile().data.username,
+          ThreadText: ThreadText,
+          ThreadTitle: ThreadTitle,
         },
-      });
+      }, console.log(Auth.getProfile().data._id));
 
       setThreadTitle('');
       setThreadText('');
@@ -78,13 +81,7 @@ const ThreadForm = () => {
 
       {Auth.loggedIn() ? (
         <>
-          <p
-            className={`m-0 ${
-              characterCount === 1000 || error ? 'text-danger' : ''
-            }`}
-          >
-            Character Count: {characterCount}/1000
-          </p>
+          
           <form
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
@@ -110,6 +107,13 @@ const ThreadForm = () => {
                 onChange={handleChange}
               ></textarea>
             </div>
+            <p
+            className={`m-0 ${
+              characterCount === 1000 || error ? 'text-danger' : ''
+            }`}
+          >
+            Character Count: {characterCount}/1000
+          </p>
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
