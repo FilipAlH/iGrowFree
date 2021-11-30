@@ -7,6 +7,7 @@ import Auth from '../../utils/auth';
 import Habits from './habits'
 import Checklist from './checklist'
 
+
 const Userlifestyle = () => {
     console.log(Auth.getProfile().data.username)
     const { loading, data } = useQuery(QUERY_USER, {
@@ -43,7 +44,9 @@ const Userlifestyle = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
     )
 }

@@ -1,9 +1,24 @@
-[    {      "username": "Romal",      "email": "romal@email.com",      "password": "password01"    },    {      "username": "Filip",      "email": "filip@email.com",      "password": "password02",      "userLifeStyle": "Athletic"    },    {      "username": "Phil",      "email": "phil@email.com",      "password": "password03"    },    {      "username": "Khaleel",      "email": "khaleel@email.com",      "password": "password04"      }  ]
+[
+    {
+        "username": "Romal",
+        "email": "romal@email.com",
+        "password": "password01"
+    },
+    {
+        "username": "Filip",
+        "email": "filip@email.com",
+        "password": "password02",
+        "userLifeStyle": "Athletic"
+    },
+    {
+        "username": "Phil",
+        "email": "phil@email.com",
+        "password": "password03"
+    },
+    {
+        "username": "Khaleel",
+        "email": "khaleel@email.com",
+        "password": "password04"
+    }
+]
 
-
-
-
-
-
-
-  

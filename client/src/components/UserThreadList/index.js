@@ -21,15 +21,19 @@ const UserThreadList = () => {
 
     if (loading) {
         return <div>Loading...</div>;
+
     } else{
         // console.log(thread?.threads, usersArr, users?.me[2].userThreads[0]._id)
         console.log(users?.me[4].userThreads)
+
     }
 
     // let userThreadsArr = [];
     let usersWithThreads = [];
     usersArr.forEach((user, index) => {
+
         if (users?.me[index].userThreads){
+
             usersWithThreads.push(user)
         }
     });
@@ -40,15 +44,15 @@ const UserThreadList = () => {
     console.log(usersWithThreads)
     let info = [];
     usersWithThreads.forEach((user) => {
-        for(let i = 0; i < user.userThreads.length; i++){
-            info.push({name: user.username, thread: user.userThreads[i]})
+        for (let i = 0; i < user.userThreads.length; i++) {
+            info.push({ name: user.username, thread: user.userThreads[i] })
         }
     })
     console.log(info)
     return (
         <div>
             {info && info.map((info, index) => (
-                <ListItem info={info} index={index}/>
+                <ListItem info={info} index={index} />
             ))}
         </div>
     )
