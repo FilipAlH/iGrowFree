@@ -15,7 +15,7 @@ const Habits = ({ user }) => {
     return (
         <div className="flex flex-col">
             {lifestyle.LifeStyleHabits && lifestyle.LifeStyleHabits.map((habit) => (
-                <li className="pb-3 mt-5 text-xl font-bold underline text-base" key={habit.habitName}>{habit.habitName}:</li>
+                <li className="pb-3 mt-5 text-lg font-bold underline text-base" key={habit.habitName}>{habit.habitName}:</li>
             ))}
         </div>
     )
