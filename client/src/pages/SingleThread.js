@@ -8,6 +8,8 @@ import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_THREAD } from '../utils/queries';
 
+// import ThreadForm from "../components/ThreadForm";
+
 
 const SingleThread = () => {
   const { threadId } = useParams();
