@@ -80,9 +80,6 @@ function App() {
             <Route exact path="/threads">
               <BlogThreads />
             </Route>
-            <Route exact path="/user/threads">
-              <UserThreadList />
-            </Route>
           </div>
           <Footer />
         </div>

@@ -14,7 +14,7 @@ const UserThreadList = () => {
 
     const loading = threadQuery.loading || userQuery.loading;
 
-    const thread = threadQuery?.data;
+    // const thread = threadQuery?.data;
     const users = userQuery?.data;
 
     const usersArr = users?.me
@@ -22,14 +22,14 @@ const UserThreadList = () => {
     if (loading) {
         return <div>Loading...</div>;
     } else{
-        console.log(thread?.threads, usersArr, users?.me[2].userThreads[0]._id)
-        // console.log(users)
+        // console.log(thread?.threads, usersArr, users?.me[2].userThreads[0]._id)
+        console.log(users?.me[4].userThreads)
     }
 
-    let userThreadsArr = [];
+    // let userThreadsArr = [];
     let usersWithThreads = [];
     usersArr.forEach((user, index) => {
-        if (users?.me[index].userThreads[index]){
+        if (users?.me[index].userThreads){
             usersWithThreads.push(user)
         }
     });

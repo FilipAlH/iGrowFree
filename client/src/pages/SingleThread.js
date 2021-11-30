@@ -7,7 +7,7 @@ import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_THREAD } from '../utils/queries';
-import ThreadForm from "../components/ThreadForm";
+// import ThreadForm from "../components/ThreadForm";
 
 const SingleThread = () => {
   const { threadId } = useParams();
@@ -53,9 +53,6 @@ const SingleThread = () => {
         </div>
         <div className="w-full overflow-hidden" style={{ border: '2px solid #1a1a1a' }}>
           <CommentForm threadId={thread._id} />
-        </div>
-        <div>
-          <ThreadForm />
         </div>
       </div>
     </div>
