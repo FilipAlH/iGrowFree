@@ -16,7 +16,7 @@ console.log(data)
 console.log(info)
     return (
         <div>
-            hello{data?.thread.ThreadTitle}
+            {data?.thread.ThreadTitle}
         </div>
     )
 
