@@ -1,59 +1,23 @@
 [
     {
-      "username": "Romal",
-      "email": "romal@email.com",
-      "password": "password01"
-    },
-    {"_id":{"$oid":"61a122d327d2454ccc73940b"},"username":"Filip","email":"filip@email.com","password":"$2b$10$529UWMAK.pIr83N9oy7iIuSxDpyYOJWnzUEGBo90Wou10kawtjf7a","__v":0,"userCheckListHabits":[{"Name":"test","State":[[0],[1]]}],"userDefinedHabits":[{"_id":{"$oid":"61a57996cd24f74d7845ced8"},"habitName":"test","frequency":2},{"_id":{"$oid":"61a592da224034337c280c35"},"frequency":3},{"_id":{"$oid":"61a593905474930ac49ec52f"},"habitName":"Break Something","frequency":3},{"_id":{"$oid":"61a594a85474930ac49ec53d"},"habitName":"Hello","frequency":2},{"_id":{"$oid":"61a594e05474930ac49ec541"},"habitName":"PRayer","frequency":7}],"checkListHabits" : [
-      {
-          "Name" : "Weight lifting",
-          "State" : [
-              [
-                  0
-              ],
-              [
-                  3
-              ],
-              [
-                  4
-              ]
-          ]
-      },
-      {
-          "Name" : "Counted calories",
-          "State" : [
-              [
-                  0
-              ]
-          ]
-      },
-      {
-          "Name" : "Protein intake",
-          "State" : [
-              [
-                  0
-              ]
-          ]
-      },
-      {
-          "Name" : "Cardio",
-          "State" : [
-              [
-                  0
-              ]
-          ]
-      }
-  ]
-},
-    {
-      "username": "Phil",
-      "email": "phil@email.com",
-      "password": "password03"
+        "username": "Romal",
+        "email": "romal@email.com",
+        "password": "password01"
     },
     {
-      "username": "Khaleel",
-      "email": "khaleel@email.com",
-      "password": "password04"
-      }
-  ]
-  
+        "username": "Filip",
+        "email": "filip@email.com",
+        "password": "password02",
+        "userLifeStyle": "Athletic"
+    },
+    {
+        "username": "Phil",
+        "email": "phil@email.com",
+        "password": "password03"
+    },
+    {
+        "username": "Khaleel",
+        "email": "khaleel@email.com",
+        "password": "password04"
+    }
+]

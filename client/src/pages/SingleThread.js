@@ -7,7 +7,7 @@ import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_THREAD } from '../utils/queries';
-import ThreadForm from "../components/ThreadForm";
+
 
 const SingleThread = () => {
   const { threadId } = useParams();
@@ -24,11 +24,11 @@ const SingleThread = () => {
     console.log(thread._id)
   }
 
-    return (
+  return (
     <div className="flex flex-col md:flex-row overflow-hidden bg-white rounded-lg shadow-xl  mt-4 w-100 mx-80 bg-opacity-60">
       <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
         <h3 className="font-semibold text-lg leading-tight underline truncate mb-2">
-          <b>{thread.ThreadTitle} </b> <br/>
+          <b>{thread.ThreadTitle} </b> <br />
           Created by-
           {thread.ThreadAuthor.username} <br />
           <span className="text-sm text-gray-700 font-semibold mt-2">
@@ -54,9 +54,7 @@ const SingleThread = () => {
         <div className="w-full overflow-hidden" style={{ border: '2px solid #1a1a1a' }}>
           <CommentForm threadId={thread._id} />
         </div>
-        <div>
-          <ThreadForm />
-        </div>
+
       </div>
     </div>
 
