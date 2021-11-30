@@ -105,6 +105,14 @@ query user ($username: String!) {
         Name
         State
       }
+      userDefinedHabits {
+        habitName
+        frequency
+      }
+      userCheckListHabits {
+        Name
+        State        
+      }
   }
 }
 `;
