@@ -40,6 +40,24 @@ const userSchema = new Schema(
                 type: Schema.Types.Mixed,
             },
         ],
+        userDefinedHabits: [
+            {
+                habitName: {
+                    type: String,
+                    required: true,
+                },
+                frequency: {
+                    type: Number,
+                    required: true
+                },
+            }
+        ],
+        userCheckListHabits:[
+            {
+                type: Schema.Types.Mixed,
+            },
+
+        ],
     },
     // set this to use virtual below
     {
