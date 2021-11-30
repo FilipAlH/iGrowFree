@@ -22,9 +22,9 @@ const UserThreadList = () => {
     if (loading) {
         return <div>Loading...</div>;
 
-    } else{
+    } else {
         // console.log(thread?.threads, usersArr, users?.me[2].userThreads[0]._id)
-        console.log(users?.me[4].userThreads)
+        //console.log(users?.me[4].userThreads)
 
     }
 
@@ -32,7 +32,7 @@ const UserThreadList = () => {
     let usersWithThreads = [];
     usersArr.forEach((user, index) => {
 
-        if (users?.me[index].userThreads){
+        if (users?.me[index].userThreads) {
 
             usersWithThreads.push(user)
         }

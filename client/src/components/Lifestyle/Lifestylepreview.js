@@ -17,12 +17,19 @@ const Lifestylepreview = ({ lifeStyles = [] }) => {
         return <h3>nothing to see here...</h3>
     } else if (Auth.loggedIn()) {
         return (
-            <div>
-                <div>
-                    <Userlifestyle />
-                </div>
-                <div>
-                    <ThreadForm />
+            <div style={{
+                background: `url("https://picsum.photos/id/1018/1000")`, backgroundSize: 'cover', backgroundAttachment: 'fixed'
+            }}>
+                <div className="pb-8">
+                    <div>
+                        <Userlifestyle />
+                    </div>
+                    <div>
+                        <div className="w-100 py-4 px-6 text-gray-800 flex flex-col mx-80 justify-between bg-white rounded-lg shadow-xl bg-opacity-60">
+                            <h2 className="font-bold text-xl text-center leading-tight underline truncate mt-4">Blog feed</h2>
+                        </div>
+                        <ThreadForm />
+                    </div>
                 </div>
             </div>
         )

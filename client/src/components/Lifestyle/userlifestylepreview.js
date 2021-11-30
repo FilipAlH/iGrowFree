@@ -20,13 +20,11 @@ const Userlifestyle = () => {
     console.log(user)
 
     return (
-        <div className="h-auto py-6 flex flex-col justify-center sm:py-12" style={{
-            background: `url("https://picsum.photos/id/1018/1000")`, backgroundSize: 'cover', backgroundAttachment: 'fixed'
-        }}>
+        <div className="h-auto py-6 flex flex-col justify-center sm:py-12">
             <div className="py-8 w-screen">
                 <h2 className="mt-6 text-center text-3xl font-bold text-gray-800 mb-10">Your lifestyle:</h2>
                 <div className="lg:flex items-center justify-center w-screen">
-                    <div className="lg:w-8/12 lg:mr-7 lg:mb-0 mb-7 bg-white p-2 shadow rounded bg-opacity-60" key={user.username}>
+                    <div className="lg:w-8/12 lg:mr-7 lg:mb-0 mb-7 bg-white p-2 shadow-xl rounded-xl bg-opacity-60" key={user.username}>
                         <div className="flex items-center border-b border-gray-200 pb-6">
                             <div className="flex items-start justify-between w-full">
                                 <div className="pl-3 w-full">

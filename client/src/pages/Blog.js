@@ -27,7 +27,8 @@ const BlogThreads = () => {
         </div>
           <div>
             <div>
-              <h2 className="font-semibold text-lg text-center leading-tight underline truncate mt-4">Blog feed...</h2></div><ThreadList
+              <div className="w-100 py-4 px-6 mt-4 text-gray-800 flex flex-col mx-80 justify-between bg-white rounded-lg shadow-xl bg-opacity-60">
+                <h2 className="font-bold text-xl text-center leading-tight underline truncate mt-4">Blog feed</h2></div></div><ThreadList
               threads={threads}
               title />
           </div></>

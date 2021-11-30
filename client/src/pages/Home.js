@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client'
 import Lifestylepreview from '../components/Lifestyle/Lifestylepreview'
 
 import { QUERY_LIFESTYLES } from '../utils/queries'
-import UserThreadList from '../components/UserThreadList'
+
 
 const Home = () => {
     const { loading, data } = useQuery(QUERY_LIFESTYLES)
@@ -13,15 +13,13 @@ const Home = () => {
 
     return (
         <div>
-        <div className="">
-            {loading ? (<h3>Loading...</h3>) :
-                (
-                    <Lifestylepreview lifeStyles={lifeStyles} />
-                )}
-        </div>
-        <div>
-            <UserThreadList />
-        </div>
+            <div className="">
+                {loading ? (<h3>Loading...</h3>) :
+                    (
+                        <Lifestylepreview lifeStyles={lifeStyles} />
+                    )}
+            </div>
+
         </div>
     )
 }
