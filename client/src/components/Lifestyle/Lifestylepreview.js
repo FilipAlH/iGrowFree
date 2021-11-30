@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
 import { QUERY_USER } from '../../utils/queries'
 import Userlifestyle from './userlifestylepreview';
+import UserThreads from '../UserThreadList'
 
 const Lifestylepreview = ({ lifeStyles = [] }) => {
     lifeStyles.forEach(lifestyle => {
@@ -13,11 +14,16 @@ const Lifestylepreview = ({ lifeStyles = [] }) => {
 
     if (!lifeStyles.length) {
         return <h3>nothing to see here...</h3>
-    } else if (Auth.loggedIn()) {
+    } else if (Auth.loggedIn()){
         return (
+        <div>
             <div>
                 <Userlifestyle />
             </div>
+            <div>
+                <UserThreads />
+            </div>
+        </div>
         )
     } else {
         return (

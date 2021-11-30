@@ -13,7 +13,9 @@ const HabitForm = () => {
   const [addHabitList, { error }] = useMutation(ADD_USER_HABIT);
 
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
+
+    // event.preventDefault();
+
     console.log({ ...formStateName, ...formStateFrequency })
     try {
 
@@ -47,7 +49,9 @@ const HabitForm = () => {
             className="flex-row justify-center justify-space-between-md align-center"
           // onSubmit={handleFormSubmit}
           >
+
             <div className="w-full flex justify-center overflow-hidden bg-primary text-light p-2 m-0">
+
               <textarea
                 name="HabitName"
                 placeholder="Here's a new Habit..."
@@ -55,7 +59,9 @@ const HabitForm = () => {
                 onChange={handleChangeName}
               ></textarea>
             </div>
+
             <div className="w-full flex justify-center overflow-hidden bg-primary text-light p-2 m-0">
+
               <textarea
                 name="frequency"
                 placeholder="Times per week?"
