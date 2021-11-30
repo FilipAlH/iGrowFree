@@ -136,7 +136,7 @@ export default ({ checkList }) => {
 
 
   return (
-    <ul className="px-4 pt-2 pb-2 text-xl text-base" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginLeft: '20px' }} key={'habit'}>
+    <ul className="px-1 pt-3 pb-2 text-md text-base" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', marginLeft: '20px' }} key={'habit'}>
 
       {filteredCheckList.map((v, i) => (
         <li key={i} style={{ marginRight: '15px', marginTop: '10px' }}>

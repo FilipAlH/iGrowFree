@@ -13,7 +13,9 @@ const HabitForm = () => {
   const [addHabitList, { error }] = useMutation(ADD_USER_HABIT);
 
   const handleFormSubmit = async (event) => {
+
     // event.preventDefault();
+
     console.log({ ...formStateName, ...formStateFrequency })
     try {
 
@@ -39,7 +41,7 @@ const HabitForm = () => {
 
   return (
     <div>
-      <h3>Add Habit</h3>
+      <h3 className="mt-6 text-center text-xl font-bold underline text-gray-800 mb-2">Add Habit</h3>
 
       {Auth.loggedIn() ? (
         <>
@@ -47,7 +49,9 @@ const HabitForm = () => {
             className="flex-row justify-center justify-space-between-md align-center"
           // onSubmit={handleFormSubmit}
           >
-            <div className="w-full overflow-hidden bg-primary text-light p-2 m-0">
+
+            <div className="w-full flex justify-center overflow-hidden bg-primary text-light p-2 m-0">
+
               <textarea
                 name="HabitName"
                 placeholder="Here's a new Habit..."
@@ -55,7 +59,9 @@ const HabitForm = () => {
                 onChange={handleChangeName}
               ></textarea>
             </div>
-            <div className="w-full overflow-hidden bg-primary text-light p-2 m-0">
+
+            <div className="w-full flex justify-center overflow-hidden bg-primary text-light p-2 m-0">
+
               <textarea
                 name="frequency"
                 placeholder="Times per week?"
@@ -64,8 +70,8 @@ const HabitForm = () => {
               ></textarea>
             </div>
 
-            <div className="w-full overflow-hidden">
-              <button className="flex justify-left w-40 py-2 px-4 mt-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-blue-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleFormSubmit} type="submit">
+            <div className="w-full flex justify-center overflow-hidden">
+              <button className="flex py-2 px-4 mt-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-blue-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleFormSubmit} type="submit">
                 Add Habit
               </button>
             </div>

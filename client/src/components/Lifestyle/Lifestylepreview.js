@@ -34,7 +34,7 @@ const Lifestylepreview = ({ lifeStyles = [] }) => {
                         {lifeStyles &&
                             lifeStyles.map((lifestyle) => (
                                 <div className="lg:w-3/12 lg:mr-7 lg:ml-7 lg:mb-0 mb-7 bg-white p-6 shadow-xl sm:rounded-xl sm:p-10 bg-opacity-60" key={lifestyle._id}>
-                                    <div className="rounded sm:rounded-xl overflow-hidden shadow-lg bg-opacity-80">
+                                    <div className="rounded sm:rounded-xl overflow-hidden shadow-lg bg-opacity-60">
                                         <div className="px-6 py-4">
                                             <div className="">
                                                 <p className="text-gray-600 text-xl font-bold text-base text-center ">{lifestyle.lifeStyleType}</p>
