@@ -8,33 +8,33 @@ import { QUERY_HABITS, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const HabitForm = () => {
-  const [ formStateName, setformStateName ] = useState({ habitName:''});
-  const [ formStateFrequency, setformStateFrequency ] = useState({ frequency: 0 });
+  const [formStateName, setformStateName] = useState({ habitName: '' });
+  const [formStateFrequency, setformStateFrequency] = useState({ frequency: 0 });
   const [addHabitList, { error }] = useMutation(ADD_USER_HABIT);
 
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
-console.log({...formStateName,...formStateFrequency})
+    // event.preventDefault();
+    console.log({ ...formStateName, ...formStateFrequency })
     try {
 
       const { data } = await addHabitList({
-        variables: {username: Auth.getProfile().data.username, habit:formStateName.habitName,frequency:Number(formStateFrequency.frequency) }, 
+        variables: { username: Auth.getProfile().data.username, habit: formStateName.habitName, frequency: Number(formStateFrequency.frequency) },
       });
 
     } catch (err) {
       console.error(err);
     }
 
-    setformStateName({ habitName:''})
+    setformStateName({ habitName: '' })
     setformStateFrequency({ frequency: 0 })
   };
   const handleChangeName = (event) => {
     const { value } = event.target;
-    setformStateName({ habitName:(value) })
+    setformStateName({ habitName: (value) })
   };
   const handleChangeFrequency = (event) => {
     const { value } = event.target;
-    setformStateFrequency({ frequency:(value), })
+    setformStateFrequency({ frequency: (value), })
   };
 
   return (
@@ -45,10 +45,10 @@ console.log({...formStateName,...formStateFrequency})
         <>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
-            // onSubmit={handleFormSubmit}
+          // onSubmit={handleFormSubmit}
           >
             <div className="w-full overflow-hidden bg-primary text-light p-2 m-0">
-              <textarea 
+              <textarea
                 name="HabitName"
                 placeholder="Here's a new Habit..."
                 value={formStateName.habitName}
@@ -56,7 +56,7 @@ console.log({...formStateName,...formStateFrequency})
               ></textarea>
             </div>
             <div className="w-full overflow-hidden bg-primary text-light p-2 m-0">
-              <textarea 
+              <textarea
                 name="frequency"
                 placeholder="Times per week?"
                 value={formStateFrequency.frequency}
